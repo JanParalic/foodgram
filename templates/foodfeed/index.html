@@ -2,29 +2,49 @@
 {% load staticfiles %}
 
 {% block title_block %}
-    Index
+    Home
 {% endblock %}
 
 {% block body_block %}
-    <form method="post">
-    {% csrf_token %}
-        {% for field in form %}
-        <p>
-            {{ field.label_tag }}<br>
-            {{ field }}
-            {% if field.help_text %}
-            <small style="color: grey">{{ field.help_text }}</small>
-            {% endif %}
-            {% for error in field.errors %}
-            <p style="color: red">{{ error }}</p>
+    <h2>Sign Up</h2>
+    <form id="sign_up_form" method="post">
+        {% csrf_token %}
+            {% for field in sign_up_form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </p>
             {% endfor %}
-        </p>
-        {% endfor %}
-        <button type="submit">Sign up</button>
+
+        <input type="submit" name="submit" value="Sign Up" />
+    </form>
+
+    <h2>Login</h2>
+    <form id="login_form" method="post" action="{% url 'home' %}">
+        {% csrf_token %}
+            {% for field in login_form %}
+            <p>
+                {{ field.label_tag }}<br>
+                {{ field }}
+                {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+            </p>
+            {% endfor %}
+
+        <input type="submit" name="submit" value="Login" />
     </form>
 
     {% if registered %}
         You are now registered
+    {% elif logged_in %}
+        You are now logged in
     {% endif %}
 
 {% endblock %}
