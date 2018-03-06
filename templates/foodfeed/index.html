@@ -1,11 +1,12 @@
 {% extends 'foodfeed/base.html' %}
 {% load staticfiles %}
-
+<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"  />
 {% block title_block %}
     Home
 {% endblock %}
 
 {% block body_block %}
+<!--
     <h2>Sign Up</h2>
     <form id="sign_up_form" method="post">
         {% csrf_token %}
@@ -24,22 +25,41 @@
 
         <input type="submit" name="submit" value="Sign Up" />
     </form>
+-->
 
-    <h2>Login</h2>
-    <form id="login_form" method="post" action="{% url 'home' %}">
-        {% csrf_token %}
-            {% for field in login_form %}
-            <p>
-                {{ field.label_tag }}<br>
-                {{ field }}
-                {% for error in field.errors %}
-                <p style="color: red">{{ error }}</p>
+
+    <div id="center_plate">
+        <form id="login_form" method="post" action="{% url 'home' %}">
+            {% csrf_token %}
+                {% for field in login_form %}
+                <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}
+                    {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </p>
                 {% endfor %}
-            </p>
-            {% endfor %}
 
-        <input type="submit" name="submit" value="Login" />
-    </form>
+            <input type="submit" name="submit" value="Login" class="submit" />
+
+
+
+        </form>
+
+        <div class="horizontal_container">
+
+                <div id="line_left" class="line"> </div>
+
+                <h6>OR</h6>
+
+                <div id="line_right" class="line">  </div>
+
+        </div>
+
+        <input class="submit sign_up" value="Sign up" />
+    </div>
+
 
     {% if registered %}
         You are now registered

@@ -3,6 +3,7 @@
 
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"  />
         <title>
             FoodGram - 
             {% block title_block %}
@@ -11,8 +12,10 @@
     </head>
     
     <body>
-        <div>
-            Header goes here...
+        <div id="header">
+            <p id="foodgram_title"> foodgram</p>
+            <p id="about_us"> about us</p>
+
         </div>
         
         <div>
@@ -21,7 +24,7 @@
         </div>
         
         <div>
-            Footer goes here...
+            <!-- we dont need a footer but it would be here -->
         </div>
     
     </body>
