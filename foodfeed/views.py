@@ -32,6 +32,7 @@ def index(request):
         if user:
             if user.is_active:
                 login(request, user)
+                redirect
                 logged_in = True
 
     else:
