@@ -1,7 +1,7 @@
 {% extends 'foodfeed/base.html' %}
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" > </link>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>>
 <script src="{% static 'js/signup.js' %}"></script>
 {% block title_block %}
     Home
@@ -17,12 +17,13 @@
                     {{ field.label_tag }}<br>
                     {{ field }}
                     {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
+                        <p style="color: red">{{ error }}</p>
                     {% endfor %}
                 </p>
                 {% endfor %}
 
-            <input type="submit" name="submit" value="Login" class="submit" />
+            <input type="submit" name="submit" class="submit" value="Login" />
+        </form>
 
         <div class="horizontal_container">
 
@@ -53,7 +54,7 @@
                                         <small style="color: grey">{{ field.help_text }}</small>
                                         {% endif %}
                                         {% for error in field.errors %}
-                                        <p style="color: red">{{ error }}</p>
+                                            <p style="color: red">{{ error }}</p>
                                         {% endfor %}
                                     </p>
                                     {% endfor %}

@@ -1,4 +1,11 @@
 from django.contrib import admin
-from foodfeed.models import User
+from foodfeed.models import User, Picture
 
-admin.site.register(User)
+
+class UserAdmin(admin.ModelAdmin):
+
+    list_display = ("email", "first_name", "last_name")
+
+
+admin.site.register(User, UserAdmin)
+admin.site.register(Picture)
