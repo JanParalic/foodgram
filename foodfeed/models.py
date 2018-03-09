@@ -6,6 +6,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import ugettext_lazy as _
 
+from datetime import *
 from foodfeed.managers import UserManager
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -13,7 +14,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
-    date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
+    date_joined = models.DateField(_("Date"), default=date.today)
     is_active = models.BooleanField(_('active'), default=True)
     is_staff = models.BooleanField(_('staff'), default=True)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
@@ -53,9 +54,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Picture(models.Model):
 
     author = models.ForeignKey(User)
-    picture = models.ImageField(upload_to="media/user_pictures", blank=True, null=True)
-    description = models.CharField(max_length=1024)
-    date_published = models.DateTimeField(auto_now=True)
+    picture = models.ImageField(upload_to="{ media/user_pictures }", blank=True, null=True)
+    description = models.TextField()
+    date_published = models.DateTimeField(default=datetime.now())
 
     def __str__(self):
-        return self.author + "'s picture"
+        return str(self.author) + "'s picture"
