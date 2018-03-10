@@ -17,6 +17,9 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from foodfeed import views
 
 urlpatterns = [
@@ -24,4 +27,4 @@ urlpatterns = [
     url(r"^home/", views.index, name="home"),
     url(r"^foodfeed/", include("foodfeed.urls")),
     url(r'^admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

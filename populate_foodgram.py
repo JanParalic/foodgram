@@ -12,25 +12,25 @@ def populate():
     users = [
         {"email": "1234567j@student.gla.ac.uk", "first_name": "Matthew",
          "last_name": "Jones", "date_joined": "2017-08-12", "is_active": True,
-         "is_staff": "False", "avatar": "media/profile1.jpg"},
+         "is_staff": "False", "avatar": "profile1.jpg"},
 
         {"email": "7382645l@student.gla.ac.uk", "first_name": "Laura",
          "last_name": "Lawrence", "date_joined": "2017-10-03", "is_active": True,
-         "is_staff": "False", "avatar": "media/profile2.jpg"},
+         "is_staff": "False", "avatar": "profile2.jpg"},
 
         {"email": "7362514s@student.gla.ac.uk", "first_name": "Sarah",
          "last_name": "Smith", "date_joined": "2018-02-18", "is_active": True,
-         "is_staff": "True", "avatar": "media/profile3.jpg"}
+         "is_staff": "True", "avatar": "profile3.jpg"}
     ]
 
     pictures = [
         {"author": "1234567j@student.gla.ac.uk",
          "description": "Made this delicious apple pie for my flatmate's birthday!",
-         "date_published": django.utils.timezone.now(), "picture": "media/apple_pie.jpg"},
+         "date_published": "2018-03-09 14:07:19", "picture": "apple_pie.jpg"},
 
         {"author": "7362514s@student.gla.ac.uk",
          "description": "I tried this recipe for protein pancakes: one egg, one banana, 1/2 cup of oats.",
-         "date_published": django.utils.timezone.now(), "picture": "media/pancakes.jpg"}
+         "date_published": "2018-02-10 11:20:45", "picture": "pancakes.jpg"}
     ]
 
     for user in users:

@@ -4,13 +4,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from foodfeed.forms import SignUpForm, LogInForm
+from foodfeed.models import Picture
 
 
 def index(request):
     registered = False
     logged_in = False
 
-    if request.method == 'POST':
+    if request.method == "POST":
         sign_up_form = SignUpForm(request.POST)
         login_form = LogInForm(request.POST)
 
@@ -47,4 +48,5 @@ def index(request):
 
 @login_required(login_url="index")
 def foodfeed(request):
-    return render(request, "foodfeed/foodfeed.html")
+    feed = Picture.objects.order_by("-date_published")
+    return render(request, "foodfeed/foodfeed.html", {"feed": feed})

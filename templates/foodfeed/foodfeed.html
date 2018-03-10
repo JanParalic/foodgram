@@ -2,9 +2,11 @@
 {% load staticfiles %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 {% block title_block %}
-    Index
+    Foodfeed
 {% endblock %}
 
 {% block body_block %}
-    You are now logged in
+    {% for pic in feed %}
+        <img src={{pic.picture.url}}>
+    {% endfor %}
 {% endblock %}
