@@ -33,7 +33,7 @@ a {
     float: right;
     padding: 0;
     margin: 0;
-    text-shadow: 1px 1px 5px #000;
+    //text-shadow: 1px 1px 5px #000;
 
 }
 #about_us:hover{
@@ -48,7 +48,7 @@ a {
     float: left;
     padding: 0;
     margin: 0;
-    text-shadow: 1px 1px 5px #000;
+    //text-shadow: 1px 1px 5px #000;
 
 }
 
@@ -89,13 +89,16 @@ a {
     background-color: #10C277;
 }
 
-#login_form {
+.container{
     position: absolute;
     width: 61%;
     left: 25%;
     top: 17%;
     float: left;
     height:auto;
+}
+#login_form {
+    width :100%
 }
 
 input[type=text], input[type=password], input[type=email] {
@@ -124,10 +127,10 @@ input[type=text], input[type=password], input[type=email] {
 }
 .horizontal_container{
     position:absolute;
-    margin-top:5%;
-    top: 100%;
-    width:85%;
-    left: 0%;
+    top: 105%;
+    width:80%;
+    left: 2.5%;
+
     text-align:center;
 }
 
@@ -136,11 +139,12 @@ h6{
     width: 10%;
     display: inline-block;
     margin:0 auto;
+    color:#4CAF50;
 }
 
 .sign_up{
     position:absolute;
-    top: 125%;
+    top: 120%;
     width:85%;
     text-align:center;
     left: 0%;
@@ -179,7 +183,10 @@ h6{
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 40%;
+    max-width:60%;
+    min-width:40%;
+    min-height:75%;
+    max-height:80%;
     border-radius: 10%;
     padding-left: 4%;
     padding-bottom: 40px;

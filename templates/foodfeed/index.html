@@ -10,6 +10,7 @@
 {% block body_block %}
 
     <div id="center_plate">
+        <div class="container">
         <form id="login_form" method="post" action="{% url 'home' %}">
             {% csrf_token %}
                 {% for field in login_form %}
@@ -66,8 +67,8 @@
                 </div>
 
             </div>
+</div>
 
-        </form>
 
 
    </div>
