@@ -1,6 +1,7 @@
 from django.contrib.auth import login, logout, authenticate
-from django.shortcuts import render, redirect
-
+from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse
+from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
 from foodfeed.forms import SignUpForm, LogInForm
@@ -8,20 +9,14 @@ from foodfeed.models import Picture
 
 
 def index(request):
-    registered = False
-    logged_in = False
 
     if request.method == "POST":
         sign_up_form = SignUpForm(request.POST)
         login_form = LogInForm(request.POST)
 
         if sign_up_form.is_valid() and request.POST.get("submit") == "Sign Up":
-            user = sign_up_form.save()
-            user.set_password(user.password)
-            user.save()
-            registered = True
-
-            user_email = user.email
+            sign_up_form.save()
+            user_email = sign_up_form.cleaned_data.get("email")
             user_password = sign_up_form.cleaned_data.get("password1")
 
         elif request.POST.get("submit") == "Login":
@@ -33,20 +28,23 @@ def index(request):
         if user:
             if user.is_active:
                 login(request, user)
-                redirect
-                logged_in = True
+                return HttpResponseRedirect(reverse("foodfeed"))
 
     else:
         sign_up_form = SignUpForm()
         login_form = LogInForm()
 
     return render(request, "foodfeed/index.html", {"sign_up_form": sign_up_form,
-                                                   "login_form": login_form,
-                                                   "registered": registered,
-                                                   "logged_in": logged_in})
+                                                   "login_form": login_form})
 
 
 @login_required(login_url="index")
 def foodfeed(request):
     feed = Picture.objects.order_by("-date_published")
+
+    if request.method == "POST":
+        if request.POST.get("submit") == "Sign Out":
+            logout(request)
+            return HttpResponseRedirect(reverse("index"))
+
     return render(request, "foodfeed/foodfeed.html", {"feed": feed})

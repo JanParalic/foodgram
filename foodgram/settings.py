@@ -103,8 +103,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'foodfeed.User'
-LOGIN_REDIRECT_URL = 'foodfeed'
+AUTH_USER_MODEL = "foodfeed.User"
+LOGIN_REDIRECT_URL = "foodfeed"
+LOGOUT_REDIRECT_URL = "index"
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

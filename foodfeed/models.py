@@ -9,6 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from datetime import *
 from foodfeed.managers import UserManager
 
+
 class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(_('email address'), unique=True)
@@ -16,8 +17,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     date_joined = models.DateField(_("Date"), default=date.today)
     is_active = models.BooleanField(_('active'), default=True)
-    is_staff = models.BooleanField(_('staff'), default=True)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    is_staff = models.BooleanField(_('staff'), default=False)
+    avatar = models.ImageField(upload_to='user_pictures', null=True, blank=True)
 
     objects = UserManager()
 

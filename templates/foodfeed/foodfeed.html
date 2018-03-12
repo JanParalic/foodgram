@@ -9,4 +9,9 @@
     {% for pic in feed %}
         <img src={{pic.picture.url}}>
     {% endfor %}
+
+    <form id="sign_out_form" method="POST">
+        {% csrf_token %}
+        <input type="submit" name="submit" class="submit" value="Sign Out" />
+    </form>
 {% endblock %}

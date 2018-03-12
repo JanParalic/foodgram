@@ -11,7 +11,7 @@
 
     <div id="center_plate">
         <div class="container">
-        <form id="login_form" method="post" action="{% url 'home' %}">
+        <form id="login_form" method="post">
             {% csrf_token %}
                 {% for field in login_form %}
                 <p style=" ">
@@ -46,22 +46,22 @@
                      <span class="close">&times;</span>
 
                     <form id="sign_up_form" method="post">
-                                {% csrf_token %}
-                                    {% for field in sign_up_form %}
-                                    <p>
-                                        {{ field.label_tag }}<br>
-                                        {{ field }}
-                                        {% if field.help_text %}
-                                        <small style="color: grey">{{ field.help_text }}</small>
-                                        {% endif %}
-                                        {% for error in field.errors %}
-                                            <p style="color: red">{{ error }}</p>
-                                        {% endfor %}
-                                    </p>
-                                    {% endfor %}
+                        {% csrf_token %}
+                            {% for field in sign_up_form %}
+                            <p>
+                                {{ field.label_tag }}<br>
+                                {{ field }}
+                                {% if field.help_text %}
+                                <small style="color: grey">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% for error in field.errors %}
+                                    <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                            </p>
+                            {% endfor %}
 
-                                <input type="submit" name="submit" class="submit" value="Sign Up" />
-                            </form>
+                        <input type="submit" name="submit" class="submit" value="Sign Up" />
+                    </form>
 
 
                 </div>
@@ -107,13 +107,5 @@ window.onclick = function(event) {
 
 
         </script>
-
-
-
-    {% if registered %}
-        You are now registered
-    {% elif logged_in %}
-        You are now logged in
-    {% endif %}
 
 {% endblock %}
