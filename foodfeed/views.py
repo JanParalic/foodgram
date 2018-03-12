@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
 from foodfeed.forms import SignUpForm, LogInForm
-from foodfeed.models import Picture
+from foodfeed.models import Picture, Rating
 
 
 def index(request):

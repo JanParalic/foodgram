@@ -7,6 +7,7 @@
 
 {% block body_block %}
     {% for pic in feed %}
+        <p>{{ pic.author }}</p>
         <img src={{pic.picture.url}}>
     {% endfor %}
 

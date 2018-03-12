@@ -49,7 +49,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
     def __str__(self):
-        return self.first_name
+        return self.get_full_name()
 
 
 class Picture(models.Model):
@@ -60,4 +60,21 @@ class Picture(models.Model):
     date_published = models.DateTimeField(default=datetime.now())
 
     def __str__(self):
-        return str(self.author) + "'s picture"
+        if str(self.author)[-1] == "s":
+            return str(self.author) + "' picture"
+        else:
+            return str(self.author) + "'s picture"
+
+
+class Rating(models.Model):
+
+    author = models.ForeignKey(User)
+    picture = models.ForeignKey(Picture)
+    rating = models.PositiveIntegerField(default=5)
+
+
+class Comment(models.Model):
+
+    author = models.ForeignKey(User)
+    picture = models.ForeignKey(Picture)
+    comment = models.TextField()
