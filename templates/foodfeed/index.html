@@ -1,20 +1,32 @@
 {% extends 'foodfeed/base.html' %}
 {% load staticfiles %}
+{% block resources %}
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" > </link>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>>
 <script src="{% static 'js/signup.js' %}"></script>
+
+{% endblock %}
 {% block title_block %}
     Home
 {% endblock %}
 
 {% block body_block %}
 
+
+
+
+<div id="background">
+
+</div>
+
+
     <div id="center_plate">
         <div class="container">
         <form id="login_form" method="post">
             {% csrf_token %}
                 {% for field in login_form %}
-                <p style=" ">
+                <p class="form">
                     {{ field.label_tag }}<br>
                     {{ field }}
                     {% for error in field.errors %}
@@ -46,19 +58,20 @@
                      <span class="close">&times;</span>
 
                     <form id="sign_up_form" method="post">
-                        {% csrf_token %}
-                            {% for field in sign_up_form %}
-                            <p>
-                                {{ field.label_tag }}<br>
-                                {{ field }}
-                                {% if field.help_text %}
-                                <small style="color: grey">{{ field.help_text }}</small>
-                                {% endif %}
-                                {% for error in field.errors %}
-                                    <p style="color: red">{{ error }}</p>
-                                {% endfor %}
-                            </p>
-                            {% endfor %}
+                                {% csrf_token %}
+                                    {% for field in sign_up_form %}
+                                    <p>
+                                        {{ field.label_tag }}<br>
+                                        {{ field }}
+                                        {% if field.help_text %}
+
+                                        {% endif %}
+                                        {% for error in field.errors %}
+                                            <p style="color: red">{{ error }}</p>
+                                        {% endfor %}
+                                    </p>
+                                    {% endfor %}
+
 
                         <input type="submit" name="submit" class="submit" value="Sign Up" />
                     </form>
@@ -67,7 +80,7 @@
                 </div>
 
             </div>
-</div>
+            </div>
 
 
 

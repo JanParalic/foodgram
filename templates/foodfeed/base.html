@@ -3,13 +3,16 @@
 
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"  />
-        <title>
-            FoodGram - 
-            {% block title_block %}
-            {% endblock %}
-        </title>
-    </head>
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+
+        {% block resources %} {% endblock %}
+
+            <title>
+                FoodGram -
+                {% block title_block %}
+                {% endblock %}
+            </title>
+        </head>
     
     <body>
         <div id="header">

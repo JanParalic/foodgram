@@ -1,5 +1,6 @@
 body {
     background-color: #FFFFFF;
+    padding-top: 5%;
 }
 
 a {
@@ -9,7 +10,7 @@ a {
 
 
 #header {
-    background-color: #10C277;
+    background-color: #4CAF50;
     position: fixed;
     width: 100%;
     height: 10%;
@@ -185,8 +186,8 @@ h6{
     border: 1px solid #888;
     max-width:60%;
     min-width:40%;
-    min-height:75%;
-    max-height:80%;
+    min-height:65%;
+    max-height:75%;
     border-radius: 10%;
     padding-left: 4%;
     padding-bottom: 40px;
@@ -208,6 +209,62 @@ h6{
     cursor: pointer;
 }
 
+#background{
+    height: 80%;
+    width: 100%;
+    position: fixed;
+    left:0;
+    top:10%;
+    background-image: url('media/img/index_bg.jpg');
+    background-repeat: no-repeat, repeat;
+
+}
+
+#carousel {
+	width:255px;
+	height:290px;
+	margin:0 auto;
+}
+
+#slides {
+	overflow:hidden;
+	/* fix ie overflow issue */
+	position:relative;
+	width:250px;
+	height:250px;
+	border:1px solid #ccc;
+}
+
+/* remove the list styles, width : item width * total items */
+#slides ul {
+	position:relative;
+	left:0;
+	top:0;
+	list-style:none;
+	margin:0;
+	padding:0;
+	width:750px;
+}
+
+/* width of the item, in this case I put 250x250x gif */
+#slides li {
+	width:250px;
+	height:250px;
+	float:left;
+}
+
+#slides li img {
+	padding:5px;
+}
+
+
+.clear {clear:both}
+
+
+.form{
+    font-family: GROBOLD;
+
+}
 @font-face {
     font-family: GROBOLD;
     src: url("/static/fonts/GROBOLD.ttf");
