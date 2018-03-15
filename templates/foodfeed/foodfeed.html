@@ -1,14 +1,39 @@
 {% extends 'foodfeed/base.html' %}
 {% load staticfiles %}
+{% block resources %}
+
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<script src="{% static 'js/post.js' %}"></script>
+
+{% endblock %}
 {% block title_block %}
     Foodfeed
 {% endblock %}
 
 {% block body_block %}
     {% for pic in feed %}
-        <p>{{ pic.author }}</p>
-        <img src={{pic.picture.url}}>
+        <div class="post">
+            <p>{{ pic.author }}</p>
+            <img class="post_img" src={{pic.picture.url}}>
+
+            <!-- The Modal -->
+            <div id="big_post" class="modal_bg_post">
+
+                <!-- Modal content-->
+                <div class="modal_post modal_comments">
+                     <span class="close">&times;</span>
+
+                </div>
+
+                <div class="modal_post modal_pic">
+                    <img class="modal_img" src={{pic.picture.url}}>
+
+                </div>
+
+            </div>
+
+
+        </div>
     {% endfor %}
 
     <form id="sign_out_form" method="POST">
