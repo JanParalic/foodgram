@@ -9,7 +9,7 @@ class UserAdmin(admin.ModelAdmin):
 
 class RatingAdmin(admin.ModelAdmin):
 
-    list_display = ("author", "picture", "rating")
+    list_display = ("author", "picture", "health_rating", "style_rating", "cooking_rating")
 
 
 class CommentAdmin(admin.ModelAdmin):

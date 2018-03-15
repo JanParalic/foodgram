@@ -1,6 +1,6 @@
 body {
     background-color: #FFFFFF;
-    padding-top: 5%;
+    padding-top: 7%;
 }
 
 a {
@@ -271,7 +271,7 @@ h6{
 	left: 30%;
 	width:40%;
 	margin-bottom: 2%;
-	border-radius: 10%;
+	/*border-radius: 10%;*/
 	border-color: #ababab;
 	border-width: 2px;
 	padding:3%;
@@ -279,10 +279,14 @@ h6{
 	box-shadow: 2px 2px 10px #000;
 	
 }
+
 .post_img{
     width:100%;
+}
 
-
+.user_img{
+    width: 10%;
+    border-radius: 50%;
 }
 .modal_bg_post {
     display: none; /* Hidden by default */

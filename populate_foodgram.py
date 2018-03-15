@@ -34,10 +34,10 @@ def populate():
     ]
 
     reviews = [
-        {"author": "7382645l@student.gla.ac.uk", "picture": "2018-03-09 14:07:19", "rating": 2},
-        {"author": "7362514s@student.gla.ac.uk", "picture": "2018-03-09 14:07:19", "rating": 4},
-        {"author": "1234567j@student.gla.ac.uk", "picture": "2018-02-10 11:20:45", "rating": 3},
-        {"author": "7382645l@student.gla.ac.uk", "picture": "2018-02-10 11:20:45", "rating": 5},
+        {"author": "7382645l@student.gla.ac.uk", "picture": "2018-03-09 14:07:19", "rating": [2,3,4]},
+        {"author": "7362514s@student.gla.ac.uk", "picture": "2018-03-09 14:07:19", "rating": [4,5,1]},
+        {"author": "1234567j@student.gla.ac.uk", "picture": "2018-02-10 11:20:45", "rating": [3,4,5]},
+        {"author": "7382645l@student.gla.ac.uk", "picture": "2018-02-10 11:20:45", "rating": [5,1,2]},
     ]
 
     comments = [
@@ -92,7 +92,9 @@ def add_picture(author, picture, description, date_published):
 
 def add_review(author, picture, rating):
     review = Rating.objects.get_or_create(author=author, picture=picture)[0]
-    review.rating = rating
+    review.health_rating = rating[0]
+    review.style_rating = rating[1]
+    review.cooking_rating = rating[2]
     review.save()
     return review
 

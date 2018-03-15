@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
 from foodfeed.forms import SignUpForm, LogInForm
-from foodfeed.models import Picture, Rating
+from foodfeed.models import Picture, Rating, Comment
 
 
 def index(request):
@@ -41,6 +41,7 @@ def index(request):
 @login_required(login_url="index")
 def foodfeed(request):
     feed = Picture.objects.order_by("-date_published")
+    #feed = {pic: get_pic_details(pic) for pic in recents}
 
     if request.method == "POST":
         if request.POST.get("submit") == "Sign Out":

@@ -70,7 +70,9 @@ class Rating(models.Model):
 
     author = models.ForeignKey(User)
     picture = models.ForeignKey(Picture)
-    rating = models.PositiveIntegerField(default=5)
+    health_rating = models.PositiveIntegerField(default=5)
+    style_rating = models.PositiveIntegerField(default=5)
+    cooking_rating = models.PositiveIntegerField(default=5)
 
 
 class Comment(models.Model):

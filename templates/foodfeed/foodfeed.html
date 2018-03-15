@@ -1,5 +1,6 @@
 {% extends 'foodfeed/base.html' %}
 {% load staticfiles %}
+{% load foodfeed_tags %}
 {% block resources %}
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -13,8 +14,15 @@
 {% block body_block %}
     {% for pic in feed %}
         <div class="post">
+            <img class="user_img" src={{ pic.author.avatar.url }}>
             <p>{{ pic.author }}</p>
-            <img class="post_img" src={{pic.picture.url}}>
+            <img class="post_img" src={{ pic.picture.url }}>
+
+            {% get_pic_details pic as details %}
+
+            {% for detail in details %}
+                {{ detail }}
+            {% endfor %}
 
             <!-- The Modal -->
             <div id="big_post" class="modal_bg_post">
