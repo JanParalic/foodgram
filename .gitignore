@@ -1,5 +1,6 @@
-# DB suite
+# DB suite and migrations
 db.sqlite3
+migrations
 
 # Machine specific files
 *.pyc
