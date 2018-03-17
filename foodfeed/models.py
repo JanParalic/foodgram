@@ -55,7 +55,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Picture(models.Model):
 
     author = models.ForeignKey(User)
-    picture = models.ImageField(upload_to="user_pictures", blank=True, null=True)
+    picture = models.ImageField(upload_to="user_uploads", blank=True, null=True)
     description = models.TextField()
     date_published = models.DateTimeField(default=datetime.now())
 

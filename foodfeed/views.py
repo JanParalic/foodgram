@@ -4,8 +4,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
-from foodfeed.forms import SignUpForm, LogInForm
-from foodfeed.models import Picture, Rating, Comment
+from foodfeed.forms import SignUpForm, LogInForm, ImageUploadForm
+from foodfeed.models import Picture
 
 
 def index(request):
@@ -41,11 +41,22 @@ def index(request):
 @login_required(login_url="index")
 def foodfeed(request):
     feed = Picture.objects.order_by("-date_published")
-    #feed = {pic: get_pic_details(pic) for pic in recents}
 
     if request.method == "POST":
         if request.POST.get("submit") == "Sign Out":
             logout(request)
             return HttpResponseRedirect(reverse("index"))
 
-    return render(request, "foodfeed/foodfeed.html", {"feed": feed})
+        elif request.POST.get("submit") == "Upload":
+            upload_form = ImageUploadForm(request.POST, request.FILES)
+            if upload_form.is_valid():
+                new_picture = Picture(author=request.user,
+                                      picture=request.FILES["picture"],
+                                      description=request.POST["description"])
+                new_picture.save()
+                return HttpResponseRedirect(reverse("foodfeed"))
+
+    else:
+        upload_form = ImageUploadForm()
+
+    return render(request, "foodfeed/foodfeed.html", {"feed": feed, "upload_form": upload_form})

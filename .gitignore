@@ -7,3 +7,6 @@ migrations
 *.DS_Store
 __pycache__
 .idea
+
+# User uploads user for testing purposes
+user_uploads

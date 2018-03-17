@@ -12,13 +12,27 @@
 {% endblock %}
 
 {% block body_block %}
+    <!-- Image upload -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ upload_form.as_p }}
+        <input type="submit" name="submit" class="submit" value="Upload" />
+    </form>
+
+    <!-- Foodfeed -->
     {% for pic in feed %}
         <div class="post">
-            <img class="user_img" src={{ pic.author.avatar.url }}>
-            <p>{{ pic.author }}</p>
-            <img class="post_img" src={{ pic.picture.url }}>
+            {% if pic.author.avatar %}
+                <img class="user_img" src={{ pic.author.avatar.url }}>
+            {% else %}
+                <img class="user_img" src="{% static "images/default_avatar.jpg" %}">
+            {% endif %}
 
-            {% get_pic_details pic as details %}
+            {{ pic.author }}
+            <img class="post_img" src={{ pic.picture.url }}>
+            <p>{{ pic.description }}</p>
+
+            {% get_pic_ratings pic as details %}
 
             {% for detail in details %}
                 {{ detail }}
@@ -34,7 +48,7 @@
                 </div>
 
                 <div class="modal_post modal_pic">
-                    <img class="modal_img" src={{pic.picture.url}}>
+                    <img class="modal_img" src={{ pic.picture.url }}>
 
                 </div>
 
@@ -43,6 +57,29 @@
 
         </div>
     {% endfor %}
+
+    <!-- User Profile and statistics -->
+    {% if user.avatar %}
+        <img class="user_img" src={{ user.avatar.url }}>
+    {% else %}
+        <img class="user_img" src="{% static "images/default_avatar.jpg" %}">
+    {% endif %}
+
+    <a>{{ user.first_name }} {{ user.last_name }}</a>
+
+    <!-- Statistics -->
+    <h3>Statistics</h3>
+
+    {% get_user_stats user as stats %}
+
+    <h4>Health</h4>
+    {{ stats.health }}
+    <h4>Style</h4>
+    {{ stats.style }}
+    <h4>Cooking</h4>
+    {{ stats.cooking }}
+
+    <!-- Account options -->
 
     <form id="sign_out_form" method="POST">
         {% csrf_token %}

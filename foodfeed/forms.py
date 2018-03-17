@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from foodfeed.models import User
+from foodfeed.models import User, Picture
 
 
 class SignUpForm(UserCreationForm):
@@ -20,3 +20,11 @@ class LogInForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("email", "password")
+
+
+class ImageUploadForm(forms.ModelForm):
+    picture = forms.ImageField(label="Select a picture")
+
+    class Meta:
+        model = Picture
+        fields = ("picture", "description")

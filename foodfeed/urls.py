@@ -3,4 +3,4 @@ from foodfeed import views
 
 urlpatterns = [
     url(r"^$", views.foodfeed, name="foodfeed"),
-    ]
+]
