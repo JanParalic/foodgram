@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <script src="{% static 'js/post.js' %}"></script>
 
+
 {% endblock %}
 {% block title_block %}
     Foodfeed
@@ -50,7 +51,15 @@
                 <div class="modal_post modal_pic">
                     <img class="modal_img" src={{ pic.picture.url }}>
 
+                    <form action="" class="ratings">
+                    <input type="radio" name="ratings" value="1" />
+                    <input type="radio" name="ratings" value="2" />
+                    <input type="radio" name="ratings" value="3" />
+                    <input type="radio" name="ratings" value="4" />
+                    <input type="radio" name="ratings" value="5" />
+                </form>
                 </div>
+
 
             </div>
 
@@ -58,6 +67,7 @@
         </div>
     {% endfor %}
 
+    <div id="stats">
     <!-- User Profile and statistics -->
     {% if user.avatar %}
         <img class="user_img" src={{ user.avatar.url }}>
@@ -85,4 +95,14 @@
         {% csrf_token %}
         <input type="submit" name="submit" class="submit" value="Sign Out" />
     </form>
+
+    </div>
+
+    <div id="add_img">
+        +
+
+
+
+
+    </div>
 {% endblock %}
