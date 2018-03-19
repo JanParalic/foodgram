@@ -2,10 +2,11 @@
 {% load staticfiles %}
 {% load foodfeed_tags %}
 {% block resources %}
-
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <script src="{% static 'js/post.js' %}"></script>
-<script src="{% static 'js/add_img.js' %}"></script>
+
+
 
 {% endblock %}
 {% block title_block %}
@@ -93,26 +94,26 @@
 
     </div>
 
-    <span id ="sign" class="add_img">
-        +
+      <span onclick="document.getElementById('id01').style.display='block'" class="add_img"> +</span>
 
-        <!-- The Modal -->
-            <div id="signModal" class="modal">
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Add image</h2>
+      </header>
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                     <span class="close">&times;</span>
-   <!-- Image upload -->
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ upload_form.as_p }}
-        <input type="submit" name="submit" class="submit" value="Upload" />
-    </form>
+         <!-- Image upload -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ upload_form.as_p }}
+                <input type="submit" name="submit" class="submit" value="Upload" />
+            </form>
+
+    </div>
+  </div>
+</div>
 
 
-                </div>
-
-            </div>
-
-    </span>
 {% endblock %}
