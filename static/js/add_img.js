@@ -2,16 +2,16 @@ window.onload = function(){
     // your code
 
 // Get the modal
-var modal = document.getElementById('signModal');
+var modal = document.getElementById('addPicModal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("sign");
+var btn = document.getElementById("add_pic");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close");
 
 // When the user clicks the button, open the modal
-document.getElementById("sign").onclick = function() {
+btn.onclick = function() {
     modal.style.display = "block";
 }
 

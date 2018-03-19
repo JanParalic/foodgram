@@ -5,7 +5,11 @@
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <script src="{% static 'js/post.js' %}"></script>
-<script src="{% static 'js/add_img.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
 
 {% endblock %}
 {% block title_block %}
@@ -93,26 +97,13 @@
 
     </div>
 
-    <span id ="sign" class="add_img">
-        +
-
-        <!-- The Modal -->
-            <div id="signModal" class="modal">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                     <span class="close">&times;</span>
-   <!-- Image upload -->
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ upload_form.as_p }}
-        <input type="submit" name="submit" class="submit" value="Upload" />
-    </form>
-
-
+        <!-- Modal HTML embedded directly into document -->
+                <div id="ex1" class="modal_addPic">
+                  <p>Thanks for clicking. That felt good.</p>
+                  <a href="#" rel="modal:close">Close</a>
                 </div>
 
-            </div>
+                <!-- Link to open the modal -->
+                <a href="#ex1" rel="modal:open"> <span class="add_img">+</span> </a>
 
-    </span>
 {% endblock %}
