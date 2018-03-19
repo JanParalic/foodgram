@@ -64,13 +64,13 @@
 
     <div id="stats">
     <!-- User Profile and statistics -->
-    {% if user.avatar %}
+    <a href="{% url "profile_edit" %}">{% if user.avatar %}
         <img class="user_img" src={{ user.avatar.url }}>
     {% else %}
         <img class="user_img" src="{% static "images/default_avatar.jpg" %}">
     {% endif %}
 
-    <a>{{ user.first_name }} {{ user.last_name }}</a>
+    {{ user.first_name }} {{ user.last_name }}</a>
 
     <!-- Statistics -->
     <h3>Statistics</h3>

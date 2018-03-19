@@ -4,8 +4,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 
-from foodfeed.forms import SignUpForm, LogInForm, ImageUploadForm
-from foodfeed.models import Picture
+from foodfeed.forms import *
+from foodfeed.models import User, Picture
 
 
 def index(request):
@@ -60,3 +60,31 @@ def foodfeed(request):
         upload_form = ImageUploadForm()
 
     return render(request, "foodfeed/foodfeed.html", {"feed": feed, "upload_form": upload_form})
+
+
+@login_required(login_url="index")
+def profile_edit(request):
+    if request.method == "POST":
+        profile_edit_form = ProfileEditForm(request.POST, request.FILES)
+
+        for field in profile_edit_form.fields:
+            if field != "avatar":
+                if request.POST[field] != request.user.__getattr__(field):
+                    request.user.__setattr__(field, request.POST[field])
+                    request.user.save()
+            elif request.FILES.__contains__("avatar"):
+                request.user.avatar = request.FILES["avatar"]
+                request.user.save()
+
+    else:
+        profile_edit_form = ProfileEditForm(initial={
+            "email": request.user.email,
+            "first_name": request.user.first_name,
+            "last_name": request.user.last_name})
+
+    return render(request, "foodfeed/profile_edit.html", {"form": profile_edit_form})
+
+
+@login_required(login_url="index")
+def user_profile(request, user_name_slug):
+    return render(request, "foodfeed/user_profile.html", {"user": User.objects.get(slug=user_name_slug)})
