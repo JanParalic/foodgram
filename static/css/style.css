@@ -168,7 +168,7 @@ h6{
 }
 
 /* The Modal (background) */
-.modal {
+.modal_first {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -362,22 +362,6 @@ h6{
     left:35%;
 
 }
-
-
-/* Modal Content */
-.modal-addPic {
-    vertical-align: middle;
-    position: relative;
-    z-index: 2;
-    box-sizing: border-box;
-    width: 90%;
-    background: #fff;
-    padding: 15px 30px;
-    text-align: left;
-	overflow: visible;
-}
-
-
 .user_img{
     border-radius: 50%;
 	height:5%;
