@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <script src="{% static 'js/post.js' %}"></script>
-
+<script src="{% static 'js/add_img.js' %}"></script>
 
 {% endblock %}
 {% block title_block %}
@@ -13,12 +13,7 @@
 {% endblock %}
 
 {% block body_block %}
-    <!-- Image upload -->
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ upload_form.as_p }}
-        <input type="submit" name="submit" class="submit" value="Upload" />
-    </form>
+
 
     <!-- Foodfeed -->
     {% for pic in feed %}
@@ -98,11 +93,26 @@
 
     </div>
 
-    <div id="add_img">
+    <span id ="sign" class="add_img">
         +
 
+        <!-- The Modal -->
+            <div id="signModal" class="modal">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                     <span class="close">&times;</span>
+   <!-- Image upload -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ upload_form.as_p }}
+        <input type="submit" name="submit" class="submit" value="Upload" />
+    </form>
 
 
+                </div>
 
-    </div>
+            </div>
+
+    </span>
 {% endblock %}
