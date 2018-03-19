@@ -12,15 +12,15 @@ def populate():
     users = [
         {"email": "1234567j@student.gla.ac.uk", "first_name": "Matthew",
          "last_name": "Jones", "date_joined": "2017-08-12", "is_active": True,
-         "is_staff": "False", "avatar": "profile1.jpg"},
+         "is_staff": False, "avatar": "profile1.jpg", "password": "abcmnp"},
 
         {"email": "7382645l@student.gla.ac.uk", "first_name": "Laura",
          "last_name": "Lawrence", "date_joined": "2017-10-03", "is_active": True,
-         "is_staff": "False", "avatar": "profile2.jpg"},
+         "is_staff": False, "avatar": "profile2.jpg"},
 
         {"email": "7362514s@student.gla.ac.uk", "first_name": "Sarah",
          "last_name": "Smith", "date_joined": "2018-02-18", "is_active": True,
-         "is_staff": "True", "avatar": "profile3.jpg"},
+         "is_staff": False, "avatar": "profile3.jpg"},
     ]
 
     pictures = [
@@ -28,9 +28,21 @@ def populate():
          "description": "Made this delicious apple pie for my flatmate's birthday!",
          "date_published": "2018-03-09 14:07:19", "picture": "apple_pie.jpg"},
 
+        {"author": "1234567j@student.gla.ac.uk",
+         "description": "My first try at my mom's pumpkin soup recipe, what do you think?",
+         "date_published": "2018-02-09 20:12:34", "picture": "pumpkin_soup.jpg"},
+
         {"author": "7362514s@student.gla.ac.uk",
          "description": "I tried this recipe for protein pancakes: one egg, one banana, 1/2 cup of oats.",
          "date_published": "2018-02-10 11:20:45", "picture": "pancakes.jpg"},
+
+        {"author": "7382645l@student.gla.ac.uk",
+         "description": "Had an ok home-made lamb curry, but I love how the picture turned out!",
+         "date_published": "2018-02-15 16:10:03", "picture": "lamb_curry.jpg"},
+
+        {"author": "7382645l@student.gla.ac.uk",
+         "description": "I had this amazing paella at my friend's house last night, I think the lighting could have been better",
+         "date_published": "2018-03-10 11:10:42", "picture": "paella.jpg"},
     ]
 
     reviews = [
