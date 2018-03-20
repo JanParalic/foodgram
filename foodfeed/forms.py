@@ -28,3 +28,13 @@ class ImageUploadForm(forms.ModelForm):
     class Meta:
         model = Picture
         fields = ("picture", "description")
+
+
+class ProfileEditForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=30, required=False, help_text="First Name: ")
+    last_name = forms.CharField(max_length=30, required=False, help_text="Last Name: ")
+    email = forms.EmailField(max_length=254, help_text="Email Address: ")
+
+    class Meta:
+        model = User
+        fields = ("avatar", "first_name", "last_name", "email")

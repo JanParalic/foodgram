@@ -1,0 +1,16 @@
+{% extends 'foodfeed/base.html' %}
+{% load staticfiles %}
+{% block resources %}
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" > </link>
+<script src="{% static 'js/signup.js' %}"></script>
+
+{% endblock %}
+{% block title_block %}
+    {{ user.first_name }} {{ user.last_name }}
+{% endblock %}
+
+{% block body_block %}
+    You are currently viewing the profile of {{ user.slug }}
+{% endblock %}
