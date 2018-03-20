@@ -2,10 +2,12 @@
 {% load staticfiles %}
 {% load foodfeed_tags %}
 {% block resources %}
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <script src="{% static 'js/post.js' %}"></script>
-
+<script src="{% static 'js/limiter.js' %}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 {% endblock %}
@@ -20,14 +22,44 @@
     {% for pic in feed %}
         <div class="post">
             {% if pic.author.avatar %}
-                <img class="user_img" src={{ pic.author.avatar.url }}>
+            <div class="circular post_user_img">
+                <img  src={{ pic.author.avatar.url }}></div>
             {% else %}
-                <img class="user_img" src="{% static "images/default_avatar.jpg" %}">
+             <div class="circular post_user_img">
+                <img  src="{% static "images/default_avatar.jpg" %}"></div>
             {% endif %}
 
-            {{ pic.author }}
-            <img class="post_img" src={{ pic.picture.url }}>
-            <p>{{ pic.description }}</p>
+            <p class="name">{{ pic.author }}</p>
+            <div class="container_img">
+                <img class="post_img" src={{ pic.picture.url }}>
+                <div class="middle">
+                    <div class="ratings">
+                        <h2>Health</h2>
+                        <span class="fa fa-star checked_purple"></span>
+                        <span class="fa fa-star checked_purple"></span>
+                        <span class="fa fa-star checked_purple"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+
+                        <h2>Style</h2>
+                        <span class="fa fa-star checked_red"></span>
+                        <span class="fa fa-star checked_red"></span>
+                        <span class="fa fa-star "></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+
+                        <h2>Cooking</h2>
+                        <span class="fa fa-star checked_blue"></span>
+                        <span class="fa fa-star checked_blue"></span>
+                        <span class="fa fa-star checked_blue"></span>
+                        <span class="fa fa-star checked_blue"></span>
+                        <span class="fa fa-star"></span>
+
+
+                    </div>
+                </div>
+            </div>
+            <p class="description">{{ pic.description }}</p>
 
             {% get_pic_ratings pic as details %}
 
@@ -47,31 +79,33 @@
                 <div class="modal_post modal_pic">
                     <img class="modal_img" src={{ pic.picture.url }}>
 
-                    <form action="" class="ratings">
-                    <input type="radio" name="ratings" value="1" />
-                    <input type="radio" name="ratings" value="2" />
-                    <input type="radio" name="ratings" value="3" />
-                    <input type="radio" name="ratings" value="4" />
-                    <input type="radio" name="ratings" value="5" />
-                </form>
+                        <div class="ratings_container">
+                        <h3>Health</h3>
+                            <span class="fa fa-star checked_purple"></span>
+                            <span class="fa fa-star checked_purple"></span>
+                            <span class="fa fa-star checked_purple"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
 
-                    <label class="container">One
-                      <input type="radio" checked="checked" name="radio">
-                      <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Two
-                      <input type="radio" name="radio">
-                      <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Three
-                      <input type="radio" name="radio">
-                      <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Four
-                      <input type="radio" name="radio">
-                      <span class="checkmark"></span>
-                    </label>
+                        </div>
 
+                        <div class="ratings_container">
+                            <h3>Style</h3>
+                            <span class="fa fa-star checked_red"></span>
+                            <span class="fa fa-star checked_red"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+
+                        <div class="ratings_container">
+                            <h3>Cooking</h3>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star"></span>
+                         </div>
 
                 </div>
 
@@ -85,30 +119,46 @@
     <div id="stats">
     <!-- User Profile and statistics -->
     <a href="{% url "profile_edit" %}">{% if user.avatar %}
-        <img class="user_img" src={{ user.avatar.url }}>
+        <div class="circular">
+            <img  src={{ user.avatar.url }}> </div>
     {% else %}
-        <img class="user_img" src="{% static "images/default_avatar.jpg" %}">
+        <div class="circular">
+            <img class="user_img" src="{% static "images/default_avatar.jpg" %}"> </div>
     {% endif %}
 
     {{ user.first_name }} {{ user.last_name }}</a>
 
     <!-- Statistics -->
-    <h3>Statistics</h3>
+    <h4>Statistics</h4>
 
-    {% get_user_stats user as stats %}
+        {% get_user_stats user as stats %}
+        <div class="stats_container">
+            <h5>Health</h5>
+        <div class="stat">
+             <div id="purple"> {{ stats.health }}</div>
+        </div>
+        </div>
 
-    <h4>Health</h4>
-    {{ stats.health }}
-    <h4>Style</h4>
-    {{ stats.style }}
-    <h4>Cooking</h4>
-    {{ stats.cooking }}
+        <div class="stats_container">
+            <h5>Style</h5>
+                <div class="stat">
+                    <div id="red"> {{ stats.style }}</div>
+                </div>
+        </div>
+
+        <div class="stats_container">
+            <h5>Cooking</h5>
+                <div class="stat">
+                    <div id="blue"> {{ stats.cooking }}</div>
+                </div>
+
+        </div>
 
     <!-- Account options -->
 
     <form id="sign_out_form" method="POST">
         {% csrf_token %}
-        <input type="submit" name="submit" class="submit" value="Sign Out" />
+        <input type="submit" name="submit" class="signout" value="Sign Out" />
     </form>
 
     </div>

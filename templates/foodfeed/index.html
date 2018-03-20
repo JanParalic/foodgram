@@ -27,7 +27,7 @@
             {% csrf_token %}
                 {% for field in login_form %}
                 <p class="form">
-                    {{ field.label_tag }}<br>
+            <p class="form_tag">{{ field.label_tag }}<br></p>
                     {{ field }}
                     {% for error in field.errors %}
                         <p style="color: red">{{ error }}</p>
