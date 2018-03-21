@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <script src="{% static 'js/post.js' %}"></script>
 <script src="{% static 'js/limiter.js' %}"></script>
-<script src="{% static "js/ratings.js" %}"></script>
+<script src="{% static 'js/ratings.js' %}"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -40,34 +40,34 @@
 
                         {% get_pic_ratings pic as details %}
 
-                        <div class="health_rating" id="health_rating" data-rating="{{ details.health }}">
-                        <h2>Health</h2>
-                        <span id="span1" ></span>
-                        <span id="span2" ></span>
-                        <span id="span3" ></span>
-                        <span id="span4" ></span>
-                        <span id="span5" ></span>
+                        <div id="health_rating" data-rating="{{ details.health }}">
+                            <h2>Health</h2>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
                         </div>
 
-                        <div class="style_rating" id="style_rating" data-rating="{{ details.style }}">
-                        <h2>Style</h2>
-                        <span id="span1" ></span>
-                        <span id="span2" ></span>
-                        <span id="span3" ></span>
-                        <span id="span4" ></span>
-                        <span id="span5" ></span>
+                        <div id="style_rating" data-rating="{{ details.style }}">
+                            <h2>Style</h2>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
                         </div>
 
-                        <div class="cooking_rating" id="cooking_rating" data-rating="{{ details.cooking }}">
-                        <h2>Cooking</h2>
-                        <span id="span1" ></span>
-                        <span id="span2" ></span>
-                        <span id="span3" ></span>
-                        <span id="span4" ></span>
-                        <span id="span5" ></span>
+                        <div id="cooking_rating" data-rating="{{ details.cooking }}">
+                            <h2>Cooking</h2>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
                         </div>
 
-                        <script>GetRatings();</script>
+                        <script> GetRatings();</script>
                     </div>
                 </div>
             </div>
