@@ -419,12 +419,11 @@ font-family: times new roman;
 	width: 30%;	
 	float: left;
 	margin-left: 17%;
-	padding-top:3%;
+	padding-top:1%;
 	padding-bottom: 4%;
 }
 .modal_img{
 	width: 100%;
-	box-shadow: 0px 0px 3px rgba(0,0,0,0.4);
 }
 
 .add_img{
@@ -469,25 +468,36 @@ font-family: times new roman;
   border-radius: 50%;
   object-fit: cover;
 }
+.horizont{
+    position:relative;
+    width:100%;
+    text-align:center;
+}
+
 .post_user_img{
 	float: left;
-  margin-left: 19%;
+  margin-left: 0%;
 }
 .name{
-	float: right;
-	margin-right: 19%;
+	float:left;
+	margin-left: 18%;
 	margin-top: 4%;
 	font-weight: 900;
 	font-style: italic;
 	font-size: 1.2em;
 	font-family: times new roman;
 }
+.modaldate{
+	margin-right: 2%;
+		
+}
 .date{
-    float: left;
+    float: right;
     margin-left: 30%;
     color: #ababab;
     font-size: 1.0em;
     font-family: times new roman;
+	margin-bottom: 2%;
 }
 .description{
 	width:100%;
@@ -564,6 +574,34 @@ font-family: times new roman;
 	background-color: #10C277;
 }
 
+
+.profilePic{
+	position: relative;
+	left: 35%;
+	width: 30%;
+	height: 30%;
+}
+.profileName{
+	
+	height: 10%;
+	width: 100%;
+	font-size: 2em;
+	font-weight: 700;
+	text-align: center;	
+	margin-top: 1%;
+	margin-bottom: 1%;
+	font-family: "Segoe UI",Arial,sans-serif;
+	color: #4CAF50
+	
+}
+.profileContainer{
+	width: 100%;
+}
+
+.profilePost{
+	width: 50%;
+	float: left;
+}
 @font-face {
     font-family: GROBOLD;
     src: url("/static/fonts/GROBOLD.ttf");

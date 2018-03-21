@@ -17,14 +17,35 @@
 {% endblock %}
 
 {% block body_block %}
-    {{ user.first_name }} {{ user.last_name }}
     {% if user.avatar %}
-        <img  src={{ user.avatar.url }}>
+            <div class="profilePic circular">
+                <img  src={{ user.avatar.url }}>
+
+            </div>
+
+            <p class="profileName">{{ user.first_name }} {{ user.last_name }}</p>
+
     {% else %}
-        <img  src="{% static "images/default_avatar.jpg" %}">
+        <div class="profilePic circular">
+                <img  src="{% static "images/default_avatar.jpg" %}">
+
+        </div>
+
+           <p class="profileName">{{ user.first_name }} {{ user.last_name }}</p>
     {% endif %}
 
-    <h3>User Uploads</h3>
+    <div class="profileContainer">
+
+    {% get_user_uploads user as pics %}
+
+    {% for pic in pics %}
+
+
+        <img class="profilePost" src={{ pic.picture.url }}>
+
+    {% endfor %}
+    </div>
+
     {% get_user_uploads user as pics %}
 
     {% for pic in pics %}
