@@ -26,7 +26,7 @@ def populate():
     pictures = [
         {"author": "1234567j@student.gla.ac.uk",
          "description": "Made this delicious apple pie for my flatmate's birthday!",
-         "date_published": "2018-03-09 14:07:19", "picture": "apple_pie.jpg"},
+         "date_published": "2018-03-11 14:07:19", "picture": "apple_pie.jpg"},
 
         {"author": "1234567j@student.gla.ac.uk",
          "description": "My first try at my mom's pumpkin soup recipe, what do you think?",
@@ -46,8 +46,8 @@ def populate():
     ]
 
     reviews = [
-        {"author": "7382645l@student.gla.ac.uk", "picture": "2018-03-09 14:07:19", "rating": [2,3,4]},
-        {"author": "7362514s@student.gla.ac.uk", "picture": "2018-03-09 14:07:19", "rating": [4,5,1]},
+        {"author": "7382645l@student.gla.ac.uk", "picture": "2018-03-11 14:07:19", "rating": [2,3,4]},
+        {"author": "7362514s@student.gla.ac.uk", "picture": "2018-03-11 14:07:19", "rating": [4,5,1]},
         {"author": "1234567j@student.gla.ac.uk", "picture": "2018-02-10 11:20:45", "rating": [3,4,5]},
         {"author": "7382645l@student.gla.ac.uk", "picture": "2018-02-10 11:20:45", "rating": [5,1,2]},
     ]

@@ -49,3 +49,15 @@ def get_user_stats(user):
     return {"health": health_sum//len(pictures),
             "style": style_sum//len(pictures),
             "cooking": cooking_sum//len(pictures)}
+
+
+@register.assignment_tag
+def get_position(picture, feed):
+    counter = 0
+
+    for pic in feed:
+        if pic == picture:
+            return counter
+        counter += 1
+
+    return -1
