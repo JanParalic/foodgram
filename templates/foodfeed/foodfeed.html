@@ -45,7 +45,7 @@
 
                 <!-- Modal content-->
                 <div class="modal_post modal_comments">
-                     <span class="close">&times;</span>
+                     <span class="close {{ index }}">&times;</span>
 
                     <a href="{% url "user_profile" pic.author.slug %}">
                         {% if pic.author.avatar %}
@@ -70,8 +70,6 @@
 
 
                 </div>
-
-                <!-- ################################################################################ -->
 
 
                 <div class="modal_post modal_pic">
@@ -110,10 +108,12 @@
 
             </div>
 
+        <!-- ################################################################################ -->
+
             <div class="container_img">
                 {% get_position pic feed as index %}
 
-                <img class="post_img" src={{ pic.picture.url }}>
+                <img class="post_img" src="{{ pic.picture.url }}" onclick="viewBigPost({{ index }})">
                 <div class="middle" onclick="viewBigPost({{ index }})">
                     <div class="ratings">
 
