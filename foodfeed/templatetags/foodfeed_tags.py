@@ -13,18 +13,18 @@ def get_pic_ratings(picture):
     cooking_sum = 0
 
     if len(ratings) == 0:
-        return [health_sum,
-                style_sum,
-                cooking_sum]
+        return {"health": 0,
+                "style": 0,
+                "cooking": 0}
 
     for rating in ratings:
         health_sum += rating.health_rating
         style_sum += rating.style_rating
         cooking_sum += rating.cooking_rating
 
-    return [health_sum//len(ratings),
-            style_sum//len(ratings),
-            cooking_sum//len(ratings)]
+    return {"health": health_sum//len(ratings),
+            "style": style_sum//len(ratings),
+            "cooking": cooking_sum//len(ratings)}
 
 
 @register.assignment_tag
