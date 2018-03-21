@@ -1,13 +1,13 @@
-function GetRatings() {
+function GetRatings(index) {
 
-    var health = document.getElementById("health_rating");
-    var healthSpans = document.getElementById( 'health_rating' ).getElementsByTagName( 'span' );
+    var health = document.getElementById("health_rating " + index.toString());
+    var healthSpans = document.getElementById( 'health_rating '  + index.toString()).getElementsByTagName( 'span' );
 
-    var style = document.getElementById("style_rating");
-    var styleSpans = document.getElementById( 'style_rating' ).getElementsByTagName( 'span' );
+    var style = document.getElementById("style_rating " + index.toString());
+    var styleSpans = document.getElementById( 'style_rating ' + index.toString() ).getElementsByTagName( 'span' );
 
-    var cooking = document.getElementById("cooking_rating");
-    var cookingSpans = document.getElementById( 'cooking_rating' ).getElementsByTagName( 'span' );
+    var cooking = document.getElementById("cooking_rating " + index.toString());
+    var cookingSpans = document.getElementById( 'cooking_rating ' + index.toString() ).getElementsByTagName( 'span' );
 
     var empty_star = "fa fa-star";
     var health_star_full = "fa fa-star checked_purple";
