@@ -9,36 +9,24 @@ function GetRatings() {
     var cooking = document.getElementById("cooking_rating");
     var cookingSpans = document.getElementById( 'cooking_rating' ).getElementsByTagName( 'span' );
 
+    var empty_star = "fa fa-star";
+    var health_star_full = "fa fa-star checked_purple";
+    var style_star_full = "fa fa-star checked_red";
+    var cooking_star_full = "fa fa-star checked_blue";
 
-    var health_star_full = "checked_purple";
-    var style_star_full = "checked_red";
-    var cooking_star_full = "checked_blue";
-
-    SetPictureRatingsStarClass(healthSpans, health_star_full, health);
-    SetPictureRatingsStarClass(styleSpans, style_star_full, style);
-    SetPictureRatingsStarClass(cookingSpans, cooking_star_full,cooking);
+    SetPictureRatingsStarClass(healthSpans, health_star_full, empty_star, health);
+    SetPictureRatingsStarClass(styleSpans, style_star_full, empty_star, style);
+    SetPictureRatingsStarClass(cookingSpans, cooking_star_full, empty_star, cooking);
 
 }
 
-function SetPictureRatingsStarClass(spanList,checkedClass, rating_type) {
-    for(i=0; i<5; i++){
-        if(spanList[i].classList.contains(checkedClass)){
-            spanList[i].classList.remove(checkedClass);
-
-        }
-    }
+function SetPictureRatingsStarClass(spanList, checkedClass, uncheckedClass, rating_type) {
 
     for (i = 0; i < rating_type.dataset.rating; i++) {
-        spanList[i].classList.add(checkedClass);
+        spanList[i].className = checkedClass;
     }
 
-//    for (i = rating_type.dataset.rating; i < 5; i++) {
-//
-//    }
+    for (i = rating_type.dataset.rating; i < 5; i++) {
+        spanList[i].className = uncheckedClass;
+    }
 }
-
-function GetElementInsideContainer(div, i) {
-    return document.getElementById(div).children[i];
-}
-
-
