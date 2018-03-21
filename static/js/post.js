@@ -46,3 +46,9 @@ window.onclick = function(event) {
 
 
 };
+
+function viewBigPost(index) {
+    var modal = document.getElementById('big_post ' + index.toString());
+
+    modal.style.display = "block";
+}

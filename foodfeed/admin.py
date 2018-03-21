@@ -15,7 +15,7 @@ class RatingAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
 
-    list_display = ("author", "picture", "comment")
+    list_display = ("author", "picture", "comment", "date_published")
 
 
 admin.site.register(User, UserAdmin)

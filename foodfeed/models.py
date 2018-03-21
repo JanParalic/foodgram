@@ -97,3 +97,4 @@ class Comment(models.Model):
     author = models.ForeignKey(User)
     picture = models.ForeignKey(Picture)
     comment = models.TextField()
+    date_published = models.DateTimeField(default=timezone.now())

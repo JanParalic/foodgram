@@ -53,11 +53,12 @@ def populate():
     ]
 
     comments = [
-        {"author": "7382645l@student.gla.ac.uk", "picture": "2018-03-09 14:07:19", "comment": "Looks delicious"},
+        {"author": "7382645l@student.gla.ac.uk", "picture": "2018-03-21 14:07:19",
+         "comment": "Looks delicious", "date": "2018-03-21 14:17:21"},
         {"author": "1234567j@student.gla.ac.uk", "picture": "2018-02-10 11:20:45",
-         "comment": "Can I have the recipe please =)"},
+         "comment": "Can I have the recipe please =)", "date": "2018-02-10 16:32:21"},
         {"author": "7382645l@student.gla.ac.uk", "picture": "2018-02-10 11:20:45",
-         "comment": "I made some just yesterday as well"},
+         "comment": "I made some just yesterday as well", "date": "2018-02-13 14:20:45"},
     ]
 
     for user in users:
@@ -79,7 +80,7 @@ def populate():
             if comment["picture"] == picture["date_published"]:
                 add_comment(User.objects.get(email=comment["author"]),
                             Picture.objects.get(date_published=picture["date_published"]),
-                            comment["comment"])
+                            comment["comment"], comment["date"])
 
 
 def add_user(email, first_name, last_name, date_joined, is_active, is_staff, avatar):
@@ -111,9 +112,10 @@ def add_review(author, picture, rating):
     return review
 
 
-def add_comment(author, picture, comment):
+def add_comment(author, picture, comment, date):
     com = Comment.objects.get_or_create(author=author, picture=picture)[0]
     com.comment = comment
+    com.date_published = date
     com.save()
     return com
 
