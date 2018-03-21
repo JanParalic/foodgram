@@ -36,6 +36,9 @@
 
                 <p class="name">{{ pic.author }}</p>
 
+            {% get_date_posted pic as date %}
+            <p class="date">{{ date }}</p>
+
                 {% get_date_posted pic as date %}
                 <p class="date">{{ date }}</p>
             </div>
@@ -45,45 +48,10 @@
                 <div class="middle">
                     <div class="ratings">
 
-                        {% get_position pic feed as index %}
-                        {% get_pic_ratings pic as details %}
-
-                        <div id="health_rating {{ index }}" data-rating="{{ details.health }}">
-                            <h2>Health</h2>
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
-                        </div>
-
-                        <div id="style_rating {{ index }}" data-rating="{{ details.style }}">
-                            <h2>Style</h2>
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
-                        </div>
-
-                        <div id="cooking_rating {{ index }}" data-rating="{{ details.cooking }}">
-                            <h2>Cooking</h2>
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
-                            <span class=""></span>
-                        </div>
-
-                        <script> GetRatings( {{ index }} );</script>
-                    </div>
-                </div>
-            </div>
-            <p class="description">{{ pic.description }}</p>
-
-
-            <!-- The Modal -->
-            <div id="big_post" class="modal_bg_post">
+            <!-- ################################################################################ -->
+             <!-- The Modal -->
+            {% get_position pic feed as index %}
+            <div id="big_post {{ index }}" class="modal_bg_post">
 
                 <!-- Modal content-->
                 <div class="modal_post modal_comments">
@@ -104,9 +72,17 @@
 
 
                      <!-- TU DAJ KOMENTY , POD TENTO KOMENT -->
+                    {% get_picture_comments pic as comments %}
+
+                    {% for comment in comments %}
+                        {{ comment.comment }}
+                    {% endfor %}
 
 
                 </div>
+
+                <!-- ################################################################################ -->
+
 
                 <div class="modal_post modal_pic">
                                     {% get_date_posted pic as date %}
@@ -145,6 +121,51 @@
 
 
             </div>
+
+            <div class="container_img">
+                {% get_position pic feed as index %}
+
+                <img class="post_img" src={{ pic.picture.url }}>
+                <div class="middle" onclick="viewBigPost({{ index }})">
+                    <div class="ratings">
+
+                        {% get_pic_ratings pic as details %}
+
+                        <div id="health_rating {{ index }}" data-rating="{{ details.health }}">
+                            <h2>Health</h2>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                        </div>
+
+                        <div id="style_rating {{ index }}" data-rating="{{ details.style }}">
+                            <h2>Style</h2>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                        </div>
+
+                        <div id="cooking_rating {{ index }}" data-rating="{{ details.cooking }}">
+                            <h2>Cooking</h2>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                        </div>
+
+                        <script> GetRatings( {{ index }} );</script>
+                    </div>
+                </div>
+            </div>
+            <p class="description">{{ pic.description }}</p>
+
+
+
 
 
         </div>

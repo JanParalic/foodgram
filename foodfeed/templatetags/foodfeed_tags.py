@@ -60,6 +60,11 @@ def get_user_uploads(user):
 
 
 @register.assignment_tag
+def get_picture_comments(picture):
+    return Comment.objects.filter(picture=picture).order_by("date_published")
+
+
+@register.assignment_tag
 def get_date_posted(picture):
     posted = picture.date_published
     now = timezone.now()
