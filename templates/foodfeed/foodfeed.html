@@ -33,6 +33,10 @@
             {% endif %}
 
             <p class="name">{{ pic.author }}</p></a>
+
+            {% get_date_posted pic as date %}
+            <p class="date">{{ date }}</p>
+
             <div class="container_img">
                 <img class="post_img" src={{ pic.picture.url }}>
                 <div class="middle">

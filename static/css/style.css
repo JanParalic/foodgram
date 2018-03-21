@@ -455,6 +455,13 @@ input[type=text], input[type=password], input[type=email] {
 	font-size: 1.2em;
 	font-family: times new roman;
 }
+.date{
+    float: left;
+    margin-left: 30%;
+    color: #ababab;
+    font-size: 1.0em;
+    font-family: times new roman;
+}
 .description{
 	width:100%;
 	margin-top: 5%;
