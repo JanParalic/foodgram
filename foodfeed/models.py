@@ -10,6 +10,7 @@ from django.template.defaultfilters import slugify
 import itertools
 
 from datetime import *
+from django.utils import timezone
 from foodfeed.managers import UserManager
 
 
@@ -73,7 +74,7 @@ class Picture(models.Model):
     author = models.ForeignKey(User)
     picture = models.ImageField(upload_to="user_uploads", blank=True, null=True)
     description = models.TextField()
-    date_published = models.DateTimeField(default=datetime.now())
+    date_published = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         if str(self.author)[-1] == "s":

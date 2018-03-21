@@ -1,7 +1,5 @@
 from django.contrib.auth import login, logout, authenticate
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
-from django.core.urlresolvers import reverse
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from foodfeed.forms import *
@@ -28,7 +26,7 @@ def index(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse("foodfeed"))
+                return redirect("foodfeed")
 
     else:
         sign_up_form = SignUpForm()
@@ -45,7 +43,7 @@ def foodfeed(request):
     if request.method == "POST":
         if request.POST.get("submit") == "Sign Out":
             logout(request)
-            return HttpResponseRedirect(reverse("index"))
+            return redirect("index")
 
         elif request.POST.get("submit") == "Upload":
             upload_form = ImageUploadForm(request.POST, request.FILES)
@@ -54,7 +52,7 @@ def foodfeed(request):
                                       picture=request.FILES["picture"],
                                       description=request.POST["description"])
                 new_picture.save()
-                return HttpResponseRedirect(reverse("foodfeed"))
+                return redirect("foodfeed")
 
     else:
         upload_form = ImageUploadForm()
@@ -75,6 +73,8 @@ def profile_edit(request):
             elif request.FILES.__contains__("avatar"):
                 request.user.avatar = request.FILES["avatar"]
                 request.user.save()
+
+        return redirect("foodfeed")
 
     else:
         profile_edit_form = ProfileEditForm(initial={
