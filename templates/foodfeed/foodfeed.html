@@ -138,49 +138,59 @@
     {% endfor %}
 
     <div id="stats">
-    <!-- User Profile and statistics -->
-    <a href="{% url "profile_edit" %}">{% if user.avatar %}
-        <div class="circular">
-            <img  src={{ user.avatar.url }}> </div>
-    {% else %}
-        <div class="circular">
-            <img class="user_img" src="{% static "images/default_avatar.jpg" %}"> </div>
-    {% endif %}
 
-    {{ user.first_name }} {{ user.last_name }}</a>
 
-    <!-- Statistics -->
-    <h4>Statistics</h4>
+        <!-- User Profile and statistics -->
+        <a href="{% url "profile_edit" %}">{% if user.avatar %}
+            <div class="circular">
+                <img  src={{ user.avatar.url }}> </div>
+        {% else %}
+            <div class="circular">
+                <img class="user_img" src="{% static "images/default_avatar.jpg" %}"> </div>
+        {% endif %}
 
-        {% get_user_stats user as stats %}
-        <div class="stats_container">
-            <h5>Health</h5>
-        <div class="stat">
-             <div id="purple"> {{ stats.health }}</div>
-        </div>
-        </div>
+        {{ user.first_name }} {{ user.last_name }}</a>
 
-        <div class="stats_container">
-            <h5>Style</h5>
-                <div class="stat">
-                    <div id="red"> {{ stats.style }}</div>
-                </div>
-        </div>
+        <!-- Statistics -->
+        <h4>Statistics</h4>
 
-        <div class="stats_container">
-            <h5>Cooking</h5>
-                <div class="stat">
-                    <div id="blue"> {{ stats.cooking }}</div>
-                </div>
+            {% get_user_stats user as stats %}
+            <div class="stats_container">
+                <h5>Health</h5>
+            <div class="stat">
+                 <div id="purple" data-stat="{{ stats.health }}"> {{ stats.health }}</div>
 
-        </div>
+            </div>
+            </div>
 
-    <!-- Account options -->
+            <div class="stats_container">
+                <h5>Style</h5>
+                    <div class="stat">
+                        <div id="red"> {{ stats.style }}</div>
+                    </div>
+            </div>
 
-    <form id="sign_out_form" method="POST">
-        {% csrf_token %}
-        <input type="submit" name="submit" class="signout" value="Sign Out" />
-    </form>
+            <div class="stats_container">
+                <h5>Cooking</h5>
+                    <div class="stat">
+                        <div id="blue"> {{ stats.cooking }}</div>
+                    </div>
+
+            </div>
+
+        <script>
+function myFunction() {
+    document.getElementById("purple").style.width = "100%";
+}
+</script>
+
+        <!-- Account options -->
+
+        <form id="sign_out_form" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="submit" class="signout" value="Sign Out" />
+        </form>
+
 
     </div>
 
