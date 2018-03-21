@@ -23,30 +23,20 @@
     <!-- Foodfeed -->
     {% for pic in feed %}
         <div class="post">
-            <a href="{% url 'user_profile' pic.author.slug %}">
-            <div class="horizont">
+            <a href="{% url "user_profile" pic.author.slug %}">
+            {% if pic.author.avatar %}
+            <div class="circular post_user_img">
+                <img  src={{ pic.author.avatar.url }}></div>
+            {% else %}
+             <div class="circular post_user_img">
+                <img  src="{% static "images/default_avatar.jpg" %}"></div>
+            {% endif %}
 
-                {% if pic.author.avatar %}
-                <div class="circular post_user_img">
-                    <img  src={{ pic.author.avatar.url }}></div>
-                {% else %}
-                 <div class="circular post_user_img">
-                    <img  src="{% static "images/default_avatar.jpg" %}"></div>
-                {% endif %}
-
-                <p class="name">{{ pic.author }}</p>
+            <p class="name">{{ pic.author }}</p></a>
 
             {% get_date_posted pic as date %}
             <p class="date">{{ date }}</p>
 
-                {% get_date_posted pic as date %}
-                <p class="date">{{ date }}</p>
-            </div>
-            </a>
-            <div class="container_img">
-                <img class="post_img" src={{ pic.picture.url }}>
-                <div class="middle">
-                    <div class="ratings">
 
             <!-- ################################################################################ -->
              <!-- The Modal -->
@@ -57,7 +47,7 @@
                 <div class="modal_post modal_comments">
                      <span class="close">&times;</span>
 
-                    <a href="{% url 'user_profile' pic.author.slug %}">
+                    <a href="{% url "user_profile" pic.author.slug %}">
                         {% if pic.author.avatar %}
                         <div class="circular inPostPPic" >
                             <img  src={{ pic.author.avatar.url }}></div>
@@ -85,8 +75,6 @@
 
 
                 <div class="modal_post modal_pic">
-                                    {% get_date_posted pic as date %}
-                <p class="date modaldate">{{ date }}</p>
                     <img class="modal_img" src={{ pic.picture.url }}>
 
                         <div class="ratings_container">
@@ -182,7 +170,7 @@
             <div class="circular">
                 <img class="user_img" src="{% static "images/default_avatar.jpg" %}"> </div>
         {% endif %}
-        <br>
+
         {{ user.first_name }} {{ user.last_name }}</a>
 
         <!-- Statistics -->
