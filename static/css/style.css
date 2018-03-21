@@ -360,6 +360,32 @@ input[type=text], input[type=password], input[type=email] {
 	
 }
 
+.inPostPPic{
+	float: left;
+	margin-left: 5%;
+}
+.descriptionInPic{
+	text-align: center;
+	font-style: italic;
+	font-size: 1em;
+	font-family: times new roman;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+.nameInPic{
+	float: right;
+	margin-right: 12%;
+	margin-top: 4%;
+	font-weight: 900;
+	font-style: italic;
+	font-size: 1.1em;
+font-family: times new roman;
+
+}
+
+
 .modal_bg_post {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -384,14 +410,15 @@ input[type=text], input[type=password], input[type=email] {
 
 }
 .modal_comments{
-	width: 25%;
+	width: 30%;
 	float: right;
-	margin-right: 10%;
+	margin-right: 17%;
+	padding-top: 1%;
 }
 .modal_pic{
 	width: 30%;	
 	float: left;
-	margin-left: 15%;
+	margin-left: 17%;
 	padding-top:3%;
 	padding-bottom: 4%;
 }
