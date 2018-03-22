@@ -39,12 +39,18 @@ h6{
     color:#4CAF50;
 }
 input[type=text], input[type=password], input[type=email] {
-    width: 85%;
+
+}
+.indexForm{
+	width: 85%;
     padding: 12px;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
+
+
 .form_tag{
 	margin-bottom:5px;
 	margin-top: 5px;
@@ -216,7 +222,7 @@ input[type=text], input[type=password], input[type=email] {
     min-width:40%;
     min-height:65%;
     max-height:75%;
-    border-radius: 10%;
+    border-radius: 2%;
     padding-left: 4%;
     padding-bottom: 40px;
 }
@@ -453,8 +459,12 @@ font-family: times new roman;
 .add_img:hover{
 	background-color: #10C277
 }
-
-
+.addModal{
+	border-radius: 1%;
+}
+.addClose{
+	border-radius: 10%;
+}
 .circular {
   width: 70px;
   height: 70px;
@@ -658,6 +668,51 @@ font-family: times new roman;
   font-size: 16px;
   padding: 16px 32px;
   border-radius: 3%;
+}
+
+.editContainer{
+	width: 100%;
+	margin-top: 1%;
+}
+.helpEdit{
+	text-align: center;
+	margin-bottom:1%;
+	font-family: "Segoe UI",Arial,sans-serif;
+	font-weight: 400;
+	font-style: italic;
+}
+.fieldEdit{
+	width: 40%;
+	min-height: 40px;
+	margin-left:30%;
+	text-align: center;
+	margin-bottom:2%;
+	font-weight: 600;
+	
+}
+.submitEdit{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+	margin-left:30%;
+	margin-top: 2%;
+	margin-bottom: 2%;
+
+}
+.submitEdit:hover{
+    background-color: #10C277;
+}
+.UploadIMG{
+	float:left;
+	margin-left: 5%;
+	width: 70%;
+	background-color: rgba(50,50,50,0.1);
+	border: none;
+	
+	
 }
 
 @font-face {

@@ -4,9 +4,9 @@ from foodfeed.models import User, Picture
 
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=30, required=False, help_text="")
-    last_name = forms.CharField(max_length=30, required=False, help_text="")
-    email = forms.EmailField(max_length=254, help_text="")
+    first_name = forms.CharField(max_length=30, required=False, help_text="", widget=forms.TextInput(attrs={'class': "indexForm"}))
+    last_name = forms.CharField(max_length=30, required=False, help_text="", widget=forms.TextInput(attrs={'class': "indexForm"}))
+    email = forms.EmailField(max_length=254, help_text="", widget=forms.TextInput(attrs={'class': "indexForm"}))
 
     class Meta:
         model = User
@@ -14,8 +14,8 @@ class SignUpForm(UserCreationForm):
 
 
 class LogInForm(forms.ModelForm):
-    email = forms.EmailField(max_length=254)
-    password = forms.CharField(widget=forms.PasswordInput())
+    email = forms.EmailField(max_length=254 , widget=forms.TextInput(attrs={'class': "indexForm"}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': "indexForm"}))
 
     class Meta:
         model = User
@@ -23,7 +23,7 @@ class LogInForm(forms.ModelForm):
 
 
 class ImageUploadForm(forms.ModelForm):
-    picture = forms.ImageField(label="Select a picture")
+    picture = forms.ImageField(label="Select a picture" )
 
     class Meta:
         model = Picture
@@ -31,9 +31,9 @@ class ImageUploadForm(forms.ModelForm):
 
 
 class ProfileEditForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=30, required=False, help_text="First Name: ")
-    last_name = forms.CharField(max_length=30, required=False, help_text="Last Name: ")
-    email = forms.EmailField(max_length=254, help_text="Email Address: ")
+    first_name = forms.CharField(max_length=30, required=False, help_text="First Name: ", widget=forms.TextInput(attrs={'class': "fieldEdit"}))
+    last_name = forms.CharField(max_length=30, required=False, help_text="Last Name: ", widget=forms.TextInput(attrs={'class': "fieldEdit"}))
+    email = forms.EmailField(max_length=254, help_text="Email Address: ", widget=forms.TextInput(attrs={'class': "fieldEdit"}))
 
     class Meta:
         model = User

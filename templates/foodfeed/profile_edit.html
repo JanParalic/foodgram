@@ -20,16 +20,18 @@
                         <div class="circular post_user_img">
                         <img  src={{ user.avatar.url }}></div>
                     {% else %}
-                        <div class="circular post_user_img">
+                        <div class="circular profilePic">
                         <img  src="{% static "images/default_avatar.jpg" %}"></div>
                     {% endif %}
-                    <br><br><br><br>
+
                 {% else %}
-                    {{ field.help_text }}
-                    {{ field }}<br>
+        <div class="editContainer">
+                   <p class="helpEdit"> {{ field.help_text }}</p>
+                   {{ field }}
+            </div>
                 {% endif %}
             {% endfor %}
 
-        <input type="submit" name="submit" class="submit" value="Edit" />
+        <input type="submit" name="submit" class="submitEdit" value="Edit" />
     </form>
 {% endblock %}
