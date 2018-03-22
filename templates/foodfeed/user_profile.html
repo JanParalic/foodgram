@@ -43,7 +43,7 @@
 
             <!-- ################################################################################ -->
              <!-- The Modal -->
-            {% get_position pic feed as index %}
+            {% get_position pic pics as index %}
             <div id="big_post {{ index }}" class="modal_bg_post">
 
                 <!-- Modal content-->
@@ -55,7 +55,7 @@
                         <div class="circular inPostPPic" >
                             <img  src={{ pic.author.avatar.url }}></div>
                         {% else %}
-                         <div class="circular  inPostPPic" >
+                         <div class="circular inPostPPic" >
                             <img  src="{% static "images/default_avatar.jpg" %}"></div>
                         {% endif %}
 
@@ -117,8 +117,8 @@
         <!-- ################################################################################ -->
 
         <div class="profilePost">
-            {% get_position pic feed as index %}
-            <img class="PPimage" src={{ pic.picture.url }} onclick="viewBigPost({{ index }})">
+            {% get_position pic pics as index %}
+            <img class="PPimage" src="{{ pic.picture.url }}" onclick="viewBigPost({{ index }})">
             <div class="PPmiddle" onclick="viewBigPost({{ index }})">
                 <div class="PPratings">
 

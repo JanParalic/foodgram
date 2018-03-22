@@ -5,7 +5,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 import django
 django.setup()
 
-from foodfeed.models import User, Picture, Rating, Comment
+from foodfeed.models import *
 
 
 def populate():
@@ -23,7 +23,7 @@ def populate():
          "is_staff": False, "avatar": "profile3.jpg"},
 
         {"email": "8382773l@student.gla.ac.uk", "first_name": "Amy",
-         "Lane": "Smith", "date_joined": "2018-01-15", "is_active": True,
+         "last_name": "Smith", "date_joined": "2018-01-15", "is_active": True,
          "is_staff": False, "avatar": "profile4.jpg"},
 
         {"email": "2283116s@student.gla.ac.uk", "first_name": "Jacob",
