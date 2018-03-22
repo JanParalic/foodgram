@@ -1,0 +1,35 @@
+{% extends 'foodfeed/base.html' %}
+{% load staticfiles %}
+{% block resources %}
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" > </link>
+<script src="{% static 'js/signup.js' %}"></script>
+
+{% endblock %}
+{% block title_block %}
+    Profile Edit
+{% endblock %}
+
+{% block body_block %}
+    <form id="profile_edit_form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            {% for field in form %}
+                {% if field.name == "avatar" %}
+                    {% if user.avatar %}
+                        <div class="circular post_user_img">
+                        <img  src={{ user.avatar.url }}></div>
+                    {% else %}
+                        <div class="circular post_user_img">
+                        <img  src="{% static "images/default_avatar.jpg" %}"></div>
+                    {% endif %}
+                    <br><br><br><br>
+                {% else %}
+                    {{ field.help_text }}
+                    {{ field }}<br>
+                {% endif %}
+            {% endfor %}
+
+        <input type="submit" name="submit" class="submit" value="Edit" />
+    </form>
+{% endblock %}

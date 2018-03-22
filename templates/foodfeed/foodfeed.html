@@ -2,10 +2,15 @@
 {% load staticfiles %}
 {% load foodfeed_tags %}
 {% block resources %}
-
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <script src="{% static 'js/post.js' %}"></script>
-<script src="{% static 'js/add_img.js' %}"></script>
+<script src="{% static 'js/limiter.js' %}"></script>
+<script src="{% static 'js/ratings.js' %}"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
 {% endblock %}
 {% block title_block %}
@@ -18,101 +23,219 @@
     <!-- Foodfeed -->
     {% for pic in feed %}
         <div class="post">
+            <a href="{% url "user_profile" pic.author.slug %}">
             {% if pic.author.avatar %}
-                <img class="user_img" src={{ pic.author.avatar.url }}>
+            <div class="circular post_user_img">
+                <img  src={{ pic.author.avatar.url }}></div>
             {% else %}
-                <img class="user_img" src="{% static "images/default_avatar.jpg" %}">
+             <div class="circular post_user_img">
+                <img  src="{% static "images/default_avatar.jpg" %}"></div>
             {% endif %}
 
-            {{ pic.author }}
-            <img class="post_img" src={{ pic.picture.url }}>
-            <p>{{ pic.description }}</p>
+            <p class="name">{{ pic.author }}</p></a>
 
-            {% get_pic_ratings pic as details %}
+            {% get_date_posted pic as date %}
+            <p class="date">{{ date }}</p>
 
-            {% for detail in details %}
-                {{ detail }}
-            {% endfor %}
 
-            <!-- The Modal -->
-            <div id="big_post" class="modal_bg_post">
+            <!-- ################################################################################ -->
+             <!-- The Modal -->
+            {% get_position pic feed as index %}
+            <div id="big_post {{ index }}" class="modal_bg_post">
 
                 <!-- Modal content-->
                 <div class="modal_post modal_comments">
-                     <span class="close">&times;</span>
+                     <span class="close {{ index }}">&times;</span>
+
+                    <a href="{% url "user_profile" pic.author.slug %}">
+                        {% if pic.author.avatar %}
+                        <div class="circular inPostPPic" >
+                            <img  src={{ pic.author.avatar.url }}></div>
+                        {% else %}
+                         <div class="circular  inPostPPic" >
+                            <img  src="{% static "images/default_avatar.jpg" %}"></div>
+                        {% endif %}
+
+                        <p class="nameInPic">{{ pic.author }}</p></a>
+
+                        <p class="descriptionInPic">{{ pic.description }}</p>
+
+
+                     <!-- TU DAJ KOMENTY , POD TENTO KOMENT -->
+                    {% get_picture_comments pic as comments %}
+
+                    {% for comment in comments %}
+                        {{ comment.comment }}
+                    {% endfor %}
+
 
                 </div>
+
 
                 <div class="modal_post modal_pic">
                     <img class="modal_img" src={{ pic.picture.url }}>
 
-                    <form action="" class="ratings">
-                    <input type="radio" name="ratings" value="1" />
-                    <input type="radio" name="ratings" value="2" />
-                    <input type="radio" name="ratings" value="3" />
-                    <input type="radio" name="ratings" value="4" />
-                    <input type="radio" name="ratings" value="5" />
-                </form>
+                        <div class="ratings_container">
+                        <h3>Health</h3>
+                            <span class="fa fa-star checked_purple"></span>
+                            <span class="fa fa-star checked_purple"></span>
+                            <span class="fa fa-star checked_purple"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                        </div>
+
+                        <div class="ratings_container">
+                            <h3>Style</h3>
+                            <span class="fa fa-star checked_red"></span>
+                            <span class="fa fa-star checked_red"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+
+                        <div class="ratings_container">
+                            <h3>Cooking</h3>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star"></span>
+                         </div>
+
                 </div>
 
 
             </div>
+
+        <!-- ################################################################################ -->
+
+            <div class="container_img">
+                {% get_position pic feed as index %}
+
+                <img class="post_img" src="{{ pic.picture.url }}" onclick="viewBigPost({{ index }})">
+                <div class="middle" onclick="viewBigPost({{ index }})">
+                    <div class="ratings">
+
+                        {% get_pic_ratings pic as details %}
+
+                        <div id="health_rating {{ index }}" data-rating="{{ details.health }}">
+                            <h2>Health</h2>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                        </div>
+
+                        <div id="style_rating {{ index }}" data-rating="{{ details.style }}">
+                            <h2>Style</h2>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                        </div>
+
+                        <div id="cooking_rating {{ index }}" data-rating="{{ details.cooking }}">
+                            <h2>Cooking</h2>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                            <span class=""></span>
+                        </div>
+
+                        <script> GetRatings( {{ index }} );</script>
+                    </div>
+                </div>
+            </div>
+            <p class="description">{{ pic.description }}</p>
+
+
+
 
 
         </div>
     {% endfor %}
 
     <div id="stats">
-    <!-- User Profile and statistics -->
-    {% if user.avatar %}
-        <img class="user_img" src={{ user.avatar.url }}>
-    {% else %}
-        <img class="user_img" src="{% static "images/default_avatar.jpg" %}">
-    {% endif %}
-
-    <a>{{ user.first_name }} {{ user.last_name }}</a>
-
-    <!-- Statistics -->
-    <h3>Statistics</h3>
-
-    {% get_user_stats user as stats %}
-
-    <h4>Health</h4>
-    {{ stats.health }}
-    <h4>Style</h4>
-    {{ stats.style }}
-    <h4>Cooking</h4>
-    {{ stats.cooking }}
-
-    <!-- Account options -->
-
-    <form id="sign_out_form" method="POST">
-        {% csrf_token %}
-        <input type="submit" name="submit" class="submit" value="Sign Out" />
-    </form>
-
-    </div>
-
-    <span id ="sign" class="add_img">
-        +
-
-        <!-- The Modal -->
-            <div id="signModal" class="modal">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                     <span class="close">&times;</span>
-   <!-- Image upload -->
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ upload_form.as_p }}
-        <input type="submit" name="submit" class="submit" value="Upload" />
-    </form>
 
 
-                </div>
+        <!-- User Profile and statistics -->
+        <a href="{% url "profile_edit" %}">{% if user.avatar %}
+            <div class="circular">
+                <img  src={{ user.avatar.url }}> </div>
+        {% else %}
+            <div class="circular">
+                <img class="user_img" src="{% static "images/default_avatar.jpg" %}"> </div>
+        {% endif %}
+
+        {{ user.first_name }} {{ user.last_name }}</a>
+
+        <!-- Statistics -->
+        <h4>Statistics</h4>
+
+            {% get_user_stats user as stats %}
+            <div class="stats_container">
+                <h5>Health</h5>
+            <div class="stat">
+                 <div id="purple" data-stat="{{ stats.health }}"> {{ stats.health }}</div>
+
+            </div>
+            </div>
+
+            <div class="stats_container">
+                <h5>Style</h5>
+                    <div class="stat">
+                        <div id="red"> {{ stats.style }}</div>
+                    </div>
+            </div>
+
+            <div class="stats_container">
+                <h5>Cooking</h5>
+                    <div class="stat">
+                        <div id="blue"> {{ stats.cooking }}</div>
+                    </div>
 
             </div>
 
-    </span>
+        <script>
+function myFunction() {
+    document.getElementById("purple").style.width = "100%";
+}
+</script>
+
+        <!-- Account options -->
+
+        <form id="sign_out_form" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="submit" class="signout" value="Sign Out" />
+        </form>
+
+
+    </div>
+
+      <span onclick="document.getElementById('id01').style.display='block'" class="add_img"> +</span>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Add image</h2>
+      </header>
+
+         <!-- Image upload -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ upload_form.as_p }}
+                <input type="submit" name="submit" class="submit" value="Upload" />
+            </form>
+
+    </div>
+  </div>
+</div>
+
+
 {% endblock %}

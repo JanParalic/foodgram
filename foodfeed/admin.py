@@ -5,6 +5,7 @@ from foodfeed.models import User, Picture, Rating, Comment
 class UserAdmin(admin.ModelAdmin):
 
     list_display = ("email", "first_name", "last_name")
+    prepopulated_fields = {"slug": ("first_name", "last_name")}
 
 
 class RatingAdmin(admin.ModelAdmin):
@@ -14,7 +15,7 @@ class RatingAdmin(admin.ModelAdmin):
 
 class CommentAdmin(admin.ModelAdmin):
 
-    list_display = ("author", "picture", "comment")
+    list_display = ("author", "picture", "comment", "date_published")
 
 
 admin.site.register(User, UserAdmin)

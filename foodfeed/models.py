@@ -5,8 +5,12 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import slugify
+
+import itertools
 
 from datetime import *
+from django.utils import timezone
 from foodfeed.managers import UserManager
 
 
@@ -18,7 +22,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateField(_("Date"), default=date.today)
     is_active = models.BooleanField(_('active'), default=True)
     is_staff = models.BooleanField(_('staff'), default=False)
-    avatar = models.ImageField(upload_to='user_pictures', null=True, blank=True)
+    avatar = models.ImageField(upload_to='user_uploads', null=True)
+
+    slug = models.SlugField(default="", unique=True)
 
     objects = UserManager()
 
@@ -28,6 +34,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
+
+    def save(self, *args, **kwargs):
+        slug = slugify(self.get_full_name())
+
+        for i in itertools.count(1):
+            if not User.objects.filter(slug=slug).exists():
+                break
+            slug = '%s%d' % (slug, i)
+
+        self.slug = slug
+        super(User, self).save(*args, **kwargs)
 
     def get_full_name(self):
         '''
@@ -57,7 +74,7 @@ class Picture(models.Model):
     author = models.ForeignKey(User)
     picture = models.ImageField(upload_to="user_uploads", blank=True, null=True)
     description = models.TextField()
-    date_published = models.DateTimeField(default=datetime.now())
+    date_published = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         if str(self.author)[-1] == "s":
@@ -80,3 +97,4 @@ class Comment(models.Model):
     author = models.ForeignKey(User)
     picture = models.ForeignKey(Picture)
     comment = models.TextField()
+    date_published = models.DateTimeField(default=timezone.now())

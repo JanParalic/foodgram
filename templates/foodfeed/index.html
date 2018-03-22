@@ -22,12 +22,12 @@
 
 
     <div id="center_plate">
-        <div class="container">
+        <div class="container_index">
         <form id="login_form" method="post">
             {% csrf_token %}
                 {% for field in login_form %}
                 <p class="form">
-                    {{ field.label_tag }}<br>
+            <p class="form_tag">{{ field.label_tag }}<br></p>
                     {{ field }}
                     {% for error in field.errors %}
                         <p style="color: red">{{ error }}</p>
@@ -51,7 +51,7 @@
         <button id ="sign" class="submit sign_up" > Sign Up! </button>
 
         <!-- The Modal -->
-            <div id="signModal" class="modal">
+            <div id="signModal" class="modal_first">
 
                 <!-- Modal content-->
                 <div class="modal-content">
