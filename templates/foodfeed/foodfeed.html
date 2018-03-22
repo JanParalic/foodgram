@@ -73,6 +73,9 @@
 
 
                 <div class="modal_post modal_pic">
+
+                        {% get_date_posted pic as date %}
+                        <p class="date modaldate">{{ date }}</p>
                     <img class="modal_img" src={{ pic.picture.url }}>
 
                         <div class="ratings_container">

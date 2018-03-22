@@ -17,27 +17,111 @@
 {% endblock %}
 
 {% block body_block %}
-    {{ user.first_name }} {{ user.last_name }}
     {% if user.avatar %}
-        <img  src={{ user.avatar.url }}>
+            <div class="profilePic circular">
+                <img  src={{ user.avatar.url }}>
+
+            </div>
+
+            <p class="profileName">{{ user.first_name }} {{ user.last_name }}</p>
+
     {% else %}
-        <img  src="{% static "images/default_avatar.jpg" %}">
+        <div class="profilePic circular">
+                <img  src="{% static "images/default_avatar.jpg" %}">
+
+        </div>
+
+           <p class="profileName">{{ user.first_name }} {{ user.last_name }}</p>
     {% endif %}
 
-    <h3>User Uploads</h3>
+
+    <div class="profileContainer">
     {% get_user_uploads user as pics %}
 
     {% for pic in pics %}
 
-        <div class="post">
-            <div class="container_img">
-                {% get_date_posted pic as date %}
-                <p class="date">{{ date }}</p>
-                <img class="post_img" src={{ pic.picture.url }}>
-                <div class="middle">
-                    <div class="ratings">
 
-                        {% get_position pic pics as index %}
+            <!-- ################################################################################ -->
+             <!-- The Modal -->
+            {% get_position pic feed as index %}
+            <div id="big_post {{ index }}" class="modal_bg_post">
+
+                <!-- Modal content-->
+                <div class="modal_post modal_comments">
+                     <span class="close {{ index }}">&times;</span>
+
+                    <a href="{% url "user_profile" pic.author.slug %}">
+                        {% if pic.author.avatar %}
+                        <div class="circular inPostPPic" >
+                            <img  src={{ pic.author.avatar.url }}></div>
+                        {% else %}
+                         <div class="circular  inPostPPic" >
+                            <img  src="{% static "images/default_avatar.jpg" %}"></div>
+                        {% endif %}
+
+                        <p class="nameInPic">{{ pic.author }}</p></a>
+
+                        <p class="descriptionInPic">{{ pic.description }}</p>
+
+
+                     <!-- TU DAJ KOMENTY , POD TENTO KOMENT -->
+                    {% get_picture_comments pic as comments %}
+
+                    {% for comment in comments %}
+                        {{ comment.comment }}
+                    {% endfor %}
+
+
+                </div>
+
+
+                <div class="modal_post modal_pic">
+
+                        {% get_date_posted pic as date %}
+                        <p class="date modaldate">{{ date }}</p>
+                    <img class="modal_img" src={{ pic.picture.url }}>
+
+                        <div class="ratings_container">
+                        <h3>Health</h3>
+                            <span class="fa fa-star checked_purple"></span>
+                            <span class="fa fa-star checked_purple"></span>
+                            <span class="fa fa-star checked_purple"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+
+                        </div>
+
+                        <div class="ratings_container">
+                            <h3>Style</h3>
+                            <span class="fa fa-star checked_red"></span>
+                            <span class="fa fa-star checked_red"></span>
+                            <span class="fa fa-star "></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+
+                        <div class="ratings_container">
+                            <h3>Cooking</h3>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star checked_blue"></span>
+                            <span class="fa fa-star"></span>
+                         </div>
+
+                </div>
+
+
+            </div>
+
+        <!-- ################################################################################ -->
+
+        <div class="profilePost">
+            {% get_position pic feed as index %}
+            <img class="PPimage" src={{ pic.picture.url }} onclick="viewBigPost({{ index }})">
+            <div class="PPmiddle" onclick="viewBigPost({{ index }})">
+                <div class="PPratings">
+
                         {% get_pic_ratings pic as details %}
 
                         <div id="health_rating {{ index }}" data-rating="{{ details.health }}">
@@ -69,10 +153,26 @@
 
                         <script> GetRatings( {{ index }} );</script>
                     </div>
-                </div>
+             </div>
+
+        </div>
+
+    {% endfor %}
+    </div>
+<!--
+    {% get_user_uploads user as pics %}
+
+    {% for pic in pics %}
+
+        <div class="post">
+            <div class="container_img">
+                {% get_date_posted pic as date %}
+                <p class="date">{{ date }}</p>
+                <img class="post_img" src={{ pic.picture.url }}>
+
             </div>
             <p class="description">{{ pic.description }}</p>
         </div>
 
-    {% endfor %}
+    {% endfor %} -->
 {% endblock %}
