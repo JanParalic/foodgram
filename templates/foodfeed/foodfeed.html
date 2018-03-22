@@ -39,7 +39,7 @@
 
 
             <!-- ################################################################################ -->
-             <!-- The Modal -->
+            <!-- The Modal -->
             {% get_position pic feed as index %}
             <div id="big_post {{ index }}" class="modal_bg_post">
 
@@ -61,12 +61,24 @@
                         <p class="descriptionInPic">{{ pic.description }}</p>
 
 
-                     <!-- TU DAJ KOMENTY , POD TENTO KOMENT -->
+                     <!-- Comments section -->
                     {% get_picture_comments pic as comments %}
 
                     {% for comment in comments %}
                         {{ comment.comment }}
                     {% endfor %}
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for field in comment_form %}
+                            {% if field.name == "picture" %}
+                                <input id="id_picture" name="picture" value="{{ pic.slug }}" hidden/>
+                            {% else %}
+                                {{ field }}
+                            {% endif %}
+                        {% endfor %}
+                        <input type="submit" name="submit" class="submit" value="Comment" />
+                    </form>
 
 
                 </div>

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from foodfeed.models import User, Picture
+from foodfeed.models import User, Picture, Comment
 
 
 class SignUpForm(UserCreationForm):
@@ -38,3 +38,10 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("avatar", "first_name", "last_name", "email")
+
+
+class CommentSubmissionForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ("comment", "picture")

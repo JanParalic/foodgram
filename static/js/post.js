@@ -3,6 +3,8 @@ function viewBigPost(index) {
 
     modal.style.display = "block";
 
+    var pic = document.getElementById("modal_img " + index.toString());
+
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close " + index.toString())[0];
 

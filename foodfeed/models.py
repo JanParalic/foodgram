@@ -41,6 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         for i in itertools.count(1):
             if not User.objects.filter(slug=slug).exists():
                 break
+            slug = slugify(str(self))
             slug = '%s%d' % (slug, i)
 
         self.slug = slug
@@ -76,11 +77,25 @@ class Picture(models.Model):
     description = models.TextField()
     date_published = models.DateTimeField(default=timezone.now())
 
+    slug = models.SlugField(default="", unique=True)
+
     def __str__(self):
         if str(self.author)[-1] == "s":
             return str(self.author) + "' picture"
         else:
             return str(self.author) + "'s picture"
+
+    def save(self, *args, **kwargs):
+        slug = slugify(str(self))
+
+        for i in itertools.count(1):
+            if not Picture.objects.filter(slug=slug).exists():
+                break
+            slug = slugify(str(self))
+            slug = '%s%d' % (slug, i)
+
+        self.slug = slug
+        super(Picture, self).save(*args, **kwargs)
 
 
 class Rating(models.Model):

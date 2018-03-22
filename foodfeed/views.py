@@ -54,10 +54,20 @@ def foodfeed(request):
                 new_picture.save()
                 return redirect("foodfeed")
 
+        elif request.POST.get("submit") == "Comment":
+            new_comment = Comment(author=request.user,
+                                  picture=Picture.objects.get(slug=request.POST["picture"]),
+                                  comment=request.POST["comment"])
+            new_comment.save()
+            return redirect("foodfeed")
+
     else:
         upload_form = ImageUploadForm()
+        comment_form = CommentSubmissionForm()
 
-    return render(request, "foodfeed/foodfeed.html", {"feed": feed, "upload_form": upload_form})
+    return render(request, "foodfeed/foodfeed.html", {"feed": feed,
+                                                      "upload_form": upload_form,
+                                                      "comment_form": comment_form})
 
 
 @login_required(login_url="index")
@@ -87,4 +97,16 @@ def profile_edit(request):
 
 @login_required(login_url="index")
 def user_profile(request, user_name_slug):
-    return render(request, "foodfeed/user_profile.html", {"user": User.objects.get(slug=user_name_slug)})
+    if request.method == "POST":
+        if request.POST.get("submit") == "Comment":
+            new_comment = Comment(author=request.user,
+                                  picture=Picture.objects.get(slug=request.POST["picture"]),
+                                  comment=request.POST["comment"])
+            new_comment.save()
+            return redirect("user_profile", user_name_slug)
+
+    else:
+        comment_form = CommentSubmissionForm()
+
+    return render(request, "foodfeed/user_profile.html", {"user": User.objects.get(slug=user_name_slug),
+                                                          "comment_form": comment_form})
