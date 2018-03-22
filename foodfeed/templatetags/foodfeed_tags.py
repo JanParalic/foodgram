@@ -77,8 +77,10 @@ def get_date_posted(picture):
         return "Yesterday at %s%s" % (difference.seconds // 3600, difference.seconds // 60)
     elif difference > datetime.timedelta(seconds=3600):
         return "%s hours ago" % (difference.seconds // 3600)
-    else:
+    elif difference > datetime.timedelta(seconds=60):
         return "%s minutes ago" % (difference.seconds // 60)
+    else:
+        return "About a minute ago"
 
 
 @register.assignment_tag
