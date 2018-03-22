@@ -92,6 +92,16 @@ def populate():
          "description": """Went to Bread Meats Bread for my favourite comfort food: poutine. It's a Canadian dish made of french fries, gravy and cheese curds.
          Super filling but absolutely delicious, and BMB makes a really good one, though heavy on the grave. 9/10 for me :)""",
          "date_published": "2018-03-17 22:03:10", "picture": "poutine.jpg"},
+
+        {"author": "jessica09law@fakemail.com",
+         "description": """If you haven't tried rolled ice cream yet, you're missing out!! Went to Rolado this afternoon, on Princes St. It was delicious,
+         they have so many flavours on offer and the presentation is so good it's hard to get a bad picture!""",
+         "date_published": "2018-03-12 16:33:04", "picture": "ice_cream.jpg"},
+
+        {"author": "jessica09law@fakemail.com",
+         "description": """Don't be fooled... I didn't make this from scratch hehe. Love the picture though, so I might post it to instagram. What do you
+         think?""",
+         "date_published": "2018-03-13 11:45:39", "picture": "mac_cheese.jpg"},
     ]
 
     reviews = [
