@@ -41,6 +41,7 @@ class ProfileEditForm(forms.ModelForm):
 
 
 class CommentSubmissionForm(forms.ModelForm):
+    comment = forms.CharField(max_length=250, widget=forms.TextInput(attrs={'class': "commentInput"}))
 
     class Meta:
         model = Comment

@@ -62,12 +62,16 @@
 
 
                      <!-- Comments section -->
+                    <div id="comments">
                     {% get_picture_comments pic as comments %}
 
                     {% for comment in comments %}
-                        {{ comment.comment }}
+                        <div id="commentHolder">
+                            <p class="comment"> {{ comment.comment }}</p>
+                        </div>
                     {% endfor %}
 
+                    </div>
                     <form method="post">
                         {% csrf_token %}
                         {% for field in comment_form %}
@@ -77,7 +81,7 @@
                                 {{ field }}
                             {% endif %}
                         {% endfor %}
-                        <input type="submit" name="submit" class="submit" value="Comment" />
+                        <input type="submit" name="submit" class="submitComment" value="Comment" />
                     </form>
 
 

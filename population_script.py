@@ -79,7 +79,7 @@ def populate():
         {"author": "jessica09law@fakemail.com",
          "description": """I made veggie burgers from rice, sweet, potato, black beans and mushrooms. I cooked up all the ingredients, waited for them to cool
          and then shaped them into patties and grilled them on a pan. The great thing about these burgers is that you can pretty much make them out of anything
-         you want, and add all the toppings your heart desires! Plus, you’ll be reducing your meat intake, which is not only good for your health, but also the
+         you want, and add all the toppings your heart desires! Plus, you'll be reducing your meat intake, which is not only good for your health, but also the
          environment! Let me know what you think if you try the recipe :)""",
          "date_published": "2018-03-10 20:52:39", "picture": "veggie_burger.jpg"},
 
