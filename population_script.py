@@ -12,7 +12,7 @@ def populate():
     users = [
         {"email": "1234567j@student.gla.ac.uk", "first_name": "Matthew",
          "last_name": "Jones", "date_joined": "2017-08-12", "is_active": True,
-         "is_staff": False, "avatar": "profile1.jpg", "password": "abcmnp"},
+         "is_staff": False, "avatar": "profile1.jpg"},
 
         {"email": "7382645l@student.gla.ac.uk", "first_name": "Laura",
          "last_name": "Lawrence", "date_joined": "2017-10-03", "is_active": True,
@@ -21,6 +21,22 @@ def populate():
         {"email": "7362514s@student.gla.ac.uk", "first_name": "Sarah",
          "last_name": "Smith", "date_joined": "2018-02-18", "is_active": True,
          "is_staff": False, "avatar": "profile3.jpg"},
+
+        {"email": "8382773l@student.gla.ac.uk", "first_name": "Amy",
+         "Lane": "Smith", "date_joined": "2018-01-15", "is_active": True,
+         "is_staff": False, "avatar": "profile4.jpg"},
+
+        {"email": "2283116s@student.gla.ac.uk", "first_name": "Jacob",
+         "last_name": "Stafford", "date_joined": "2018-01-22", "is_active": True,
+         "is_staff": False, "avatar": "profile5.jpg"},
+
+        {"email": "tom_swindon87@fakemail.com", "first_name": "Tom",
+         "last_name": "Swindon", "date_joined": "2018-03-10", "is_active": True,
+         "is_staff": False, "avatar": "profile6.jpg"},
+
+        {"email": "jessica09law@fakemail.com", "first_name": "Jessica",
+         "last_name": "Law", "date_joined": "2018-02-19", "is_active": True,
+         "is_staff": False, "avatar": "profile7.jpg"}
     ]
 
     pictures = [
@@ -43,6 +59,22 @@ def populate():
         {"author": "7382645l@student.gla.ac.uk",
          "description": "I had this amazing paella at my friend's house last night, I think the lighting could have been better",
          "date_published": "2018-03-10 11:10:42", "picture": "paella.jpg"},
+
+        {"author": "jessica09law@fakemail.com",
+         "description": "I made an acai bowl at home because they're usually so expensive. It looks sooo good in the picture but I have to say I'm not a fan of acai...",
+         "date_published": "2018-02-20 10:33:19", "picture": "acai_bowl.jpg"},
+
+        {"author": "tom_swindon87@fakemail.com",
+         "description": "Decided to have a fajita night, and I think the presentation and photo look pretty artsy. Any tips?",
+         "date_published": "2018-03-11 19:22:03", "picture": "fajitas.jpg"},
+
+        {"author": "2283116s@student.gla.ac.uk",
+         "description": "I tried baking for a change and these blueberry muffins are amazing! Though I think the photo looks a bit plain... What do you think?",
+         "date_published": "2018-02-10 15:08:39", "picture": "muffins.jpg"},
+
+        {"author": "jessica09law@fakemail.com",
+         "description": """Met up with a friend for coffee and thought I would try taking a typical latte insta pic. """,
+         "date_published": "2018-03-01 12:49:04", "picture": "latte.jpg"},
     ]
 
     reviews = [
