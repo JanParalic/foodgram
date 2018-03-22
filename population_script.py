@@ -16,27 +16,27 @@ def populate():
 
         {"email": "7382645l@student.gla.ac.uk", "first_name": "Laura",
          "last_name": "Lawrence", "date_joined": "2017-10-03", "is_active": True,
-         "is_staff": False, "avatar": "profile2.jpg"},
+         "is_staff": False, "avatar": "profile2.jpg", "password": "comic"},
 
         {"email": "7362514s@student.gla.ac.uk", "first_name": "Sarah",
          "last_name": "Smith", "date_joined": "2018-02-18", "is_active": True,
-         "is_staff": False, "avatar": "profile3.jpg"},
+         "is_staff": False, "avatar": "profile3.jpg", "password": "oaktree"},
 
         {"email": "8382773l@student.gla.ac.uk", "first_name": "Amy",
          "Lane": "Smith", "date_joined": "2018-01-15", "is_active": True,
-         "is_staff": False, "avatar": "profile4.jpg"},
+         "is_staff": False, "avatar": "profile4.jpg", "password": "teapot"},
 
         {"email": "2283116s@student.gla.ac.uk", "first_name": "Jacob",
          "last_name": "Stafford", "date_joined": "2018-01-22", "is_active": True,
-         "is_staff": False, "avatar": "profile5.jpg"},
+         "is_staff": False, "avatar": "profile5.jpg", "password": "strangers"},
 
         {"email": "tom_swindon87@fakemail.com", "first_name": "Tom",
          "last_name": "Swindon", "date_joined": "2018-03-10", "is_active": True,
-         "is_staff": False, "avatar": "profile6.jpg"},
+         "is_staff": False, "avatar": "profile6.jpg", "password": "ridiculous"},
 
         {"email": "jessica09law@fakemail.com", "first_name": "Jessica",
          "last_name": "Law", "date_joined": "2018-02-19", "is_active": True,
-         "is_staff": False, "avatar": "profile7.jpg"}
+         "is_staff": False, "avatar": "profile7.jpg", "password": "saturdays"}
     ]
 
     pictures = [
