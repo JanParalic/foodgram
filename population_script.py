@@ -12,31 +12,36 @@ def populate():
     users = [
         {"email": "1234567j@student.gla.ac.uk", "first_name": "Matthew",
          "last_name": "Jones", "date_joined": "2017-08-12", "is_active": True,
-         "is_staff": False, "avatar": "profile1.jpg"},
+         "is_staff": False, "avatar": "profile1.jpg", "password": "qwerty"},
 
         {"email": "7382645l@student.gla.ac.uk", "first_name": "Laura",
          "last_name": "Lawrence", "date_joined": "2017-10-03", "is_active": True,
-         "is_staff": False, "avatar": "profile2.jpg"},
+         "is_staff": False, "avatar": "profile2.jpg", "password": "comic"},
 
         {"email": "7362514s@student.gla.ac.uk", "first_name": "Sarah",
          "last_name": "Smith", "date_joined": "2018-02-18", "is_active": True,
-         "is_staff": False, "avatar": "profile3.jpg"},
+         "is_staff": False, "avatar": "profile3.jpg", "password": "oaktree"},
 
         {"email": "8382773l@student.gla.ac.uk", "first_name": "Amy",
+<<<<<<< HEAD
          "last_name": "Smith", "date_joined": "2018-01-15", "is_active": True,
          "is_staff": False, "avatar": "profile4.jpg"},
+=======
+         "Lane": "Smith", "date_joined": "2018-01-15", "is_active": True,
+         "is_staff": False, "avatar": "profile4.jpg", "password": "teapot"},
+>>>>>>> a797dfb138eecd6aac125012f972db541f9091e1
 
         {"email": "2283116s@student.gla.ac.uk", "first_name": "Jacob",
          "last_name": "Stafford", "date_joined": "2018-01-22", "is_active": True,
-         "is_staff": False, "avatar": "profile5.jpg"},
+         "is_staff": False, "avatar": "profile5.jpg", "password": "strangers"},
 
         {"email": "tom_swindon87@fakemail.com", "first_name": "Tom",
          "last_name": "Swindon", "date_joined": "2018-03-10", "is_active": True,
-         "is_staff": False, "avatar": "profile6.jpg"},
+         "is_staff": False, "avatar": "profile6.jpg", "password": "ridiculous"},
 
         {"email": "jessica09law@fakemail.com", "first_name": "Jessica",
          "last_name": "Law", "date_joined": "2018-02-19", "is_active": True,
-         "is_staff": False, "avatar": "profile7.jpg"}
+         "is_staff": False, "avatar": "profile7.jpg", "password": "saturdays"}
     ]
 
     pictures = [
@@ -75,6 +80,23 @@ def populate():
         {"author": "jessica09law@fakemail.com",
          "description": """Met up with a friend for coffee and thought I would try taking a typical latte insta pic. """,
          "date_published": "2018-03-01 12:49:04", "picture": "latte.jpg"},
+
+        {"author": "jessica09law@fakemail.com",
+         "description": """I made veggie burgers from rice, sweet, potato, black beans and mushrooms. I cooked up all the ingredients, waited for them to cool
+         and then shaped them into patties and grilled them on a pan. The great thing about these burgers is that you can pretty much make them out of anything
+         you want, and add all the toppings your heart desires! Plus, you’ll be reducing your meat intake, which is not only good for your health, but also the
+         environment! Let me know what you think if you try the recipe :)""",
+         "date_published": "2018-03-10 20:52:39", "picture": "veggie_burger.jpg"},
+
+        {"author": "7362514s@student.gla.ac.uk",
+         "description": """I had this kiwi, apple and spinach smoothie a few weeks ago, it's sweet and great for a hangover ;) The photo is missing a pop of
+         colour I think, but I didn't have anything else on hand.""",
+         "date_published": "2018-03-19 15:18:43", "picture": "smoothie.jpg"},
+
+        {"author": "tom_swindon87@fakemail.com",
+         "description": """Went to Bread Meats Bread for my favourite comfort food: poutine. It's a Canadian dish made of french fries, gravy and cheese curds.
+         Super filling but absolutely delicious, and BMB makes a really good one, though heavy on the grave. 9/10 for me :)""",
+         "date_published": "2018-03-17 22:03:10", "picture": "poutine.jpg"},
     ]
 
     reviews = [
@@ -95,7 +117,7 @@ def populate():
 
     for user in users:
         author = add_user(user["email"], user["first_name"], user["last_name"], user["date_joined"],
-                 user["is_active"], user["is_staff"], user["avatar"])
+                 user["is_active"], user["is_staff"], user["avatar"], user["password"])
 
         for pic in pictures:
             if user["email"] == pic["author"]:
@@ -115,7 +137,7 @@ def populate():
                             comment["comment"], comment["date"])
 
 
-def add_user(email, first_name, last_name, date_joined, is_active, is_staff, avatar):
+def add_user(email, first_name, last_name, date_joined, is_active, is_staff, avatar, password):
     u = User.objects.get_or_create(email=email)[0]
     u.first_name = first_name
     u.last_name = last_name
@@ -123,6 +145,7 @@ def add_user(email, first_name, last_name, date_joined, is_active, is_staff, ava
     u.is_active = is_active
     u.is_staff = is_staff
     u.avatar = avatar
+    u.set_password(password)
     u.save()
     return u
 
