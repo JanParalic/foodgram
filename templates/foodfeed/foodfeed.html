@@ -126,8 +126,8 @@
                         <span class=""></span>
                         <span class=""></span>
                      </div>
-                    <script> GetUserRatings( {{ index }} );</script>
 
+                    <script>GetUserRatings({{ index }});</script>
 
                 </div>
 
@@ -137,7 +137,6 @@
         <!-- ################################################################################ -->
 
             <div class="container_img">
-                {% get_position pic feed as index %}
 
                 <img class="post_img" src="{{ pic.picture.url }}" onclick="viewBigPost({{ index }})">
                 <div class="middle" onclick="viewBigPost({{ index }})">
