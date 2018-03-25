@@ -7,6 +7,7 @@ function viewBigPost(index) {
     var span = document.getElementsByClassName("close " + index.toString())[0];
 
     var body = document.getElementsByTagName('body')[0];
+
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";

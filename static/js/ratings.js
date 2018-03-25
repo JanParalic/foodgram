@@ -42,11 +42,7 @@ function GetUserRatings(index) {
 
 function SetPictureRatingsStarClass(spanList, checkedClass, uncheckedClass, rating_type) {
 
-    for (i = 0; i < rating_type.dataset.rating; i++) {
-        spanList[i].className = checkedClass;
-    }
+    for (i = 0; i < rating_type.dataset.rating; i++) spanList[i].className = checkedClass;
 
-    for (i = rating_type.dataset.rating; i < 5; i++) {
-        spanList[i].className = uncheckedClass;
-    }
+    for (i = rating_type.dataset.rating; i < 5; i++) spanList[i].className = uncheckedClass;
 }
