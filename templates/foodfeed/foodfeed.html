@@ -249,14 +249,14 @@ function myFunction() {
       <header class="w3-container">
         <span onclick="document.getElementById('id01').style.display='none'"
         class="w3-button w3-display-topright addClose">&times;</span>
-        <h2>Add image</h2>
+       <p class="addImgText"> Add image</p>
       </header>
 
          <!-- Image upload -->
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ upload_form.as_p }}
-                <input type="submit" name="submit" class="submit" value="Upload" />
+                <input type="submit" name="submit" class="submitEdit" value="Upload" />
             </form>
 
     </div>

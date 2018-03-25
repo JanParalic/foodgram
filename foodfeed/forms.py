@@ -7,6 +7,8 @@ class SignUpForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=False, help_text="", widget=forms.TextInput(attrs={'class': "indexForm"}))
     last_name = forms.CharField(max_length=30, required=False, help_text="", widget=forms.TextInput(attrs={'class': "indexForm"}))
     email = forms.EmailField(max_length=254, help_text="", widget=forms.TextInput(attrs={'class': "indexForm"}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': "indexForm"}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': "indexForm"}))
 
     class Meta:
         model = User
@@ -23,7 +25,8 @@ class LogInForm(forms.ModelForm):
 
 
 class ImageUploadForm(forms.ModelForm):
-    picture = forms.ImageField(label="Select a picture" )
+    picture = forms.ImageField(label="", widget=forms.FileInput(attrs={'class': "uploadPic"}))
+    description = forms.CharField(label="", widget=forms.Textarea(attrs={'class': "uploadDescription"}))
 
     class Meta:
         model = Picture

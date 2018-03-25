@@ -60,7 +60,7 @@
                     <form id="sign_up_form" method="post">
                                 {% csrf_token %}
                                     {% for field in sign_up_form %}
-                                    <p>
+                                    <p class="form indexSign">
                                         {{ field.label_tag }}<br>
                                         {{ field }}
                                         {% if field.help_text %}
@@ -73,7 +73,7 @@
                                     {% endfor %}
 
 
-                        <input type="submit" name="submit" class="submit" value="Sign Up" />
+                        <p class="form indexSign"> <input type="submit" name="submit" class="submit" value="Sign Up" />
                     </form>
 
 
