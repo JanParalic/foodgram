@@ -31,6 +31,22 @@ def get_pic_ratings(picture):
 
 
 @register.assignment_tag
+def get_current_user_pic_ratings(user, picture):
+    rating = Rating.objects.filter(author=user, picture=picture)
+
+    if len(rating) == 0:
+        return {"health": 0,
+                "style": 0,
+                "cooking": 0}
+
+    rating = rating[0]
+
+    return {"health": rating.health_rating,
+            "style": rating.style_rating,
+            "cooking": rating.cooking_rating}
+
+
+@register.assignment_tag
 def get_user_stats(user):
     pictures = Picture.objects.filter(author=user)
 
