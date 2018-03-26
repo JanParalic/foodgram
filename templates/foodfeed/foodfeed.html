@@ -8,20 +8,9 @@
     <script src="{% static 'js/post.js' %}"></script>
     <script src="{% static 'js/limiter.js' %}"></script>
     <script src="{% static 'js/ratings.js' %}"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script>
-    $(document).ready(function() {
-        $("#rating_span").click(function () {
-            $.get("{% url "rate" %}", function(data){
-            var type = $(this).dataset.type;
-            var value = $(this).dataset.value;
-            var picSlug = $(this).dataset.picture;
-            alert(data);
-            });
-        });
-    });
-    </script>
 {% endblock %}
 
 {% block title_block %}
@@ -110,15 +99,15 @@
                     <div class="ratings_container" id="user_health_rating {{ index }}"
                          data-rating="{{ details.health }}">
                         <h3>Health</h3>
-                        <span class="" id="rating_span" data-type="health" data-value="1"
+                        <span class="" data-type="health" data-value="1"
+                              data-picture="{{ pic.slug }}"> </span>  {{ variable }}
+                        <span class="" data-type="health" data-value="2"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="health" data-value="2"
+                        <span class="" data-type="health" data-value="3"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="health" data-value="3"
+                        <span class="" data-type="health" data-value="4"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="health" data-value="4"
-                              data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="health" data-value="5"
+                        <span class="" data-type="health" data-value="5"
                               data-picture="{{ pic.slug }}"></span>
 
                     </div>
@@ -126,30 +115,30 @@
                     <div class="ratings_container" id="user_style_rating {{ index }}"
                          data-rating="{{ details.style }}">
                         <h3>Style</h3>
-                        <span class="" id="rating_span" data-type="style" data-value="1"
+                        <span class="" data-type="style" data-value="1"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="style" data-value="2"
+                        <span class="" data-type="style" data-value="2"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="style" data-value="3"
+                        <span class="" data-type="style" data-value="3"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="style" data-value="4"
+                        <span class="" data-type="style" data-value="4"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="style" data-value="5"
+                        <span class="" data-type="style" data-value="5"
                               data-picture="{{ pic.slug }}"></span>
                     </div>
 
                     <div class="ratings_container" id="user_cooking_rating {{ index }}"
                         data-rating="{{ details.cooking }}">
                         <h3>Cooking</h3>
-                        <span class="" id="rating_span" data-type="cooking" data-value="1"
+                        <span class="" data-type="cooking" data-value="1"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="cooking" data-value="2"
+                        <span class="" data-type="cooking" data-value="2"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="cooking" data-value="3"
+                        <span class="" data-type="cooking" data-value="3"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="cooking" data-value="4"
+                        <span class="" data-type="cooking" data-value="4"
                               data-picture="{{ pic.slug }}"></span>
-                        <span class="" id="rating_span" data-type="cooking" data-value="5"
+                        <span class="" data-type="cooking" data-value="5"
                               data-picture="{{ pic.slug }}"></span>
                      </div>
 
@@ -288,5 +277,5 @@ function myFunction() {
   </div>
 </div>
 
-
+    <script src="{% static 'js/rating_ajax.js' %}"></script>
 {% endblock %}

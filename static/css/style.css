@@ -860,21 +860,23 @@ font-family: times new roman;
 }
 #matus{
 	float:left;
-	width:100px;
+	width:20%;
 }
 #jan{
 	margin:0 auto;
-	width:100px;
+	width:20%;
 }
 #mariola{
 	float:right;
-	width:100px;
+	width:20%;
 }
 #authors{
     width:100%;
     text-align:center;
 		font-family: "Segoe UI",Arial,sans-serif;
-	margin-top: 2%;
+	margin-top: 4%;
+	padding-left: 10%;
+	padding-right: 10%;
 }
 #aboutUs{
 	text-align: center;
@@ -886,8 +888,12 @@ font-family: times new roman;
 	font-style: italic;
 	margin-top: 2%;
 }
-.auhorName{
-	
+.authorName{
+			font-family: "Segoe UI",Arial,sans-serif;
+		font-size: 1.5em;
+		font-weight: 500;
+		margin-top:4%;
+		width: 100%;
 }
 
 

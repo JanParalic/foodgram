@@ -7,6 +7,7 @@ from foodfeed.forms import *
 from foodfeed.models import User, Picture
 
 
+
 def index(request):
 
     if request.method == "POST":
@@ -118,6 +119,11 @@ def about(request):
 
 def make_rating(request):
     if request.is_ajax():
-        print("Here")
+        return HttpResponse("Here")
     else:
         raise Http404
+def add_comment(request):
+
+    now = datetime.datetime.now()
+    html = "<html><body>It is now %s.</body></html>" % now
+    return HttpResponse("Authentication failed", status=401)
