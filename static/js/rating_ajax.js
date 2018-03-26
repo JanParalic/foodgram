@@ -1,14 +1,13 @@
 $(document).ready(function(){
     $(".fa").click(function(){
-
-		var recipeid;
-		recipeid = $(this).attr("data-rating");
-		$.get('/foodfeed/add_comment/', {recipe_id: recipeid}, function(data){
-			//$('#comment_field').html(data);
+        var picSlug = $(this).dataset.picture;
+        var type = $(this).dataset.type;
+        var value = $(this).dataset.value;
+        $.get('/foodfeed/make_rating/', {picture_slug: picSlug, type: type, value: value}, function(data){
 			$('.post').hide();
 		});
 
-alert('taute')
+alert('taute');
 
 });
 });

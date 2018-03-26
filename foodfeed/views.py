@@ -1,7 +1,7 @@
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
+from django.http import Http404, HttpResponse
 
 from foodfeed.forms import *
 from foodfeed.models import User, Picture
@@ -117,13 +117,29 @@ def user_profile(request, user_name_slug):
 def about(request):
     return render(request, "foodfeed/about.html")
 
+
 def make_rating(request):
     if request.is_ajax():
-        return HttpResponse("Here")
+        picture = Picture.objects.get(slug=request.GET.get("picture_slug", ""))
+        rating_type = request.GET.get("type", "")
+        value = request.GET.get("value", "")
+
+        try:
+            rating = Rating.objects.get(author=request.user, picture=picture)
+
+        except:
+
+            rating = Rating.objects.create(author=request.user, picture=picture)
+
+        if rating_type == "health":
+            rating.health_rating = value
+        elif rating_type == "style":
+            rating.style_rating = value
+        else:
+            rating.cooking_rating = value
+
+        rating.save()
+        return True
+
     else:
         raise Http404
-def add_comment(request):
-
-    now = datetime.datetime.now()
-    html = "<html><body>It is now %s.</body></html>" % now
-    return HttpResponse("Authentication failed", status=401)
