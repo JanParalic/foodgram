@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from foodfeed.models import User, Picture, Comment
+from foodfeed.models import *
 
 
 class SignUpForm(UserCreationForm):
