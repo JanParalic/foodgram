@@ -128,7 +128,6 @@ def make_rating(request):
             rating = Rating.objects.get(author=request.user, picture=picture)
 
         except:
-
             rating = Rating.objects.create(author=request.user, picture=picture)
 
         if rating_type == "health":
@@ -139,7 +138,7 @@ def make_rating(request):
             rating.cooking_rating = value
 
         rating.save()
-        return True
+        return HttpResponse(g)
 
     else:
         raise Http404
