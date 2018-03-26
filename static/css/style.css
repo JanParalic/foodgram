@@ -895,7 +895,12 @@ font-family: times new roman;
 		margin-top:4%;
 		width: 100%;
 }
-
+.inside{
+	opacity: 1;
+}
+.inside:hover{
+	opacity: 0.5;
+}
 
 @font-face {
     font-family: GROBOLD;

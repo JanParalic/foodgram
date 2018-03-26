@@ -30,7 +30,7 @@ function GetUserRatings(index) {
     var cooking = document.getElementById("user_cooking_rating " + index.toString());
     var cookingSpans = document.getElementById( 'user_cooking_rating ' + index.toString() ).getElementsByTagName( 'span' );
 
-    var empty_star = "fa fa-star";
+    var empty_star = "fa fa-star inside";
     var health_star_full = "fa fa-star checked_purple";
     var style_star_full = "fa fa-star checked_red";
     var cooking_star_full = "fa fa-star checked_blue";
