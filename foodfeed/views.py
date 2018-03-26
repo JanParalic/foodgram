@@ -122,8 +122,3 @@ def make_rating(request):
         return HttpResponse("Here")
     else:
         raise Http404
-def add_comment(request):
-
-    now = datetime.datetime.now()
-    html = "<html><body>It is now %s.</body></html>" % now
-    return HttpResponse("Authentication failed", status=401)
