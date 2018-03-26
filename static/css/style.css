@@ -854,6 +854,43 @@ font-family: times new roman;
 	margin-top: 3%;
 }
 
+.author{
+	background-color: rgba(0,0,0,0.2);
+	object-fit: contain;
+}
+#matus{
+	float:left;
+	width:100px;
+}
+#jan{
+	margin:0 auto;
+	width:100px;
+}
+#mariola{
+	float:right;
+	width:100px;
+}
+#authors{
+    width:100%;
+    text-align:center;
+		font-family: "Segoe UI",Arial,sans-serif;
+	margin-top: 2%;
+}
+#aboutUs{
+	text-align: center;
+		font-family: "Segoe UI",Arial,sans-serif;
+	font-size: 1.5em;
+	padding-left: 10%;
+	padding-right: 10%;
+	width:100%;
+	font-style: italic;
+	margin-top: 2%;
+}
+.auhorName{
+	
+}
+
+
 @font-face {
     font-family: GROBOLD;
     src: url("/static/fonts/GROBOLD.ttf");
