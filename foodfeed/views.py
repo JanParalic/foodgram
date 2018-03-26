@@ -1,6 +1,7 @@
 from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 from foodfeed.forms import *
 from foodfeed.models import User, Picture
@@ -114,3 +115,9 @@ def user_profile(request, user_name_slug):
 
 def about(request):
     return render(request, "foodfeed/about.html")
+
+def make_rating(request):
+    if request.is_ajax():
+        print("Here")
+    else:
+        raise Http404
