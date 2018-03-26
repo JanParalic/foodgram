@@ -31,9 +31,9 @@ function GetUserRatings(index) {
     var cookingSpans = document.getElementById( 'user_cooking_rating ' + index.toString() ).getElementsByTagName( 'span' );
 
     var empty_star = "fa fa-star inside";
-    var health_star_full = "fa fa-star checked_purple";
-    var style_star_full = "fa fa-star checked_red";
-    var cooking_star_full = "fa fa-star checked_blue";
+    var health_star_full = "fa fa-star inside checked_purple";
+    var style_star_full = "fa fa-star inside checked_red";
+    var cooking_star_full = "fa fa-star inside checked_blue";
 
     SetPictureRatingsStarClass(healthSpans, health_star_full, empty_star, health);
     SetPictureRatingsStarClass(styleSpans, style_star_full, empty_star, style);
