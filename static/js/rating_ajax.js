@@ -6,6 +6,8 @@ $(document).ready(function(){
          var index = $(this).attr("data-index");
          $.get("/foodfeed/make_rating/", {picture_slug: picSlug, type: type, value: value}, function(data){
          });
+         $(this).parent().attr("data-rating", value);
+         GetUserRatings(index);
      });
 
      $(".commentForm").submit(function(event){
