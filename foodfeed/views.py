@@ -151,6 +151,6 @@ def add_comment(request):
                               comment=request.GET.get("comment", ""))
         new_comment.save()
 
-        return HttpResponse(new_comment.comment)
+        return HttpResponse("")
     else:
         raise Http404

@@ -62,7 +62,7 @@
 
 
                      <!-- Comments section -->
-                    <div id="comments">
+                    <div id="comments" class="{{ index }}">
                     {% get_picture_comments pic as comments %}
 
                     {% for comment in comments %}
@@ -72,7 +72,8 @@
                     {% endfor %}
 
                     </div>
-                    <form method="post" id="commentForm">
+
+                    <form method="post" class="commentForm" data-index="{{ index }}">
                         {% csrf_token %}
                         {% for field in comment_form %}
                             {% if field.name == "picture" %}
@@ -130,15 +131,15 @@
                     <div class="ratings_container" id="user_cooking_rating {{ index }}"
                         data-rating="{{ details.cooking }}">
                         <h3>Cooking</h3>
-                        <span class="inside" data-type="cooking" data-value="1"
+                        <span class="" data-type="cooking" data-value="1"
                               data-picture="{{ pic.slug }}" data-index="{{ index }}"></span>
-                        <span class="inside" data-type="cooking" data-value="2"
+                        <span class="" data-type="cooking" data-value="2"
                               data-picture="{{ pic.slug }}" data-index="{{ index }}"></span>
-                        <span class="inside" data-type="cooking" data-value="3"
+                        <span class="" data-type="cooking" data-value="3"
                               data-picture="{{ pic.slug }}" data-index="{{ index }}"></span>
-                        <span class="inside" data-type="cooking" data-value="4"
+                        <span class="" data-type="cooking" data-value="4"
                               data-picture="{{ pic.slug }}" data-index="{{ index }}"></span>
-                        <span class="inside" data-type="cooking" data-value="5"
+                        <span class="" data-type="cooking" data-value="5"
                               data-picture="{{ pic.slug }}" data-index="{{ index }}"></span>
                      </div>
 
