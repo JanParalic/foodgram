@@ -138,7 +138,19 @@ def make_rating(request):
             rating.cooking_rating = value
 
         rating.save()
-        return HttpResponse()
+        return HttpResponse("")
 
+    else:
+        raise Http404
+
+
+def add_comment(request):
+    if request.is_ajax():
+        new_comment = Comment(author=request.user,
+                              picture=Picture.objects.get(slug=request.GET.get("picture_slug", "")),
+                              comment=request.GET.get("comment", ""))
+        new_comment.save()
+
+        return HttpResponse(new_comment.comment)
     else:
         raise Http404
