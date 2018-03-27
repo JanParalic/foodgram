@@ -138,7 +138,7 @@ def make_rating(request):
             rating.cooking_rating = value
 
         rating.save()
-        return HttpResponse(g)
+        return HttpResponse()
 
     else:
         raise Http404
