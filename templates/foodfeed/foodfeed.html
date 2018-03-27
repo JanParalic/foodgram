@@ -62,7 +62,7 @@
 
 
                      <!-- Comments section -->
-                    <div id="comments">
+                    <div id="comments" class="{{ index }}">
                     {% get_picture_comments pic as comments %}
 
                     {% for comment in comments %}
@@ -72,7 +72,8 @@
                     {% endfor %}
 
                     </div>
-                    <form method="post" id="commentForm">
+
+                    <form method="post" class="commentForm" data-index="{{ index }}">
                         {% csrf_token %}
                         {% for field in comment_form %}
                             {% if field.name == "picture" %}
