@@ -8,7 +8,7 @@
     <script src="{% static 'js/post.js' %}"></script>
     <script src="{% static 'js/limiter.js' %}"></script>
     <script src="{% static 'js/ratings.js' %}"></script>
-
+    <script src="{% static 'js/stats.js' %}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {% endblock %}
@@ -228,14 +228,14 @@
             <div class="stats_container">
                 <h5>Style</h5>
                     <div class="stat">
-                        <div id="red"> {{ stats.style }}</div>
+                        <div id="red" data-stat="{{ stats.style }}"> {{ stats.style }}</div>
                     </div>
             </div>
 
             <div class="stats_container">
                 <h5>Cooking</h5>
                     <div class="stat">
-                        <div id="blue"> {{ stats.cooking }}</div>
+                        <div id="blue" data-stat="{{ stats.cooking }}"> {{ stats.cooking }}</div>
                     </div>
 
             </div>
