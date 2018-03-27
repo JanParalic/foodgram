@@ -418,6 +418,16 @@ input[type=file]{
 	border-radius: 1%;
 	
 }
+@media only screen and (max-width: 1400px){
+.ratings_container{
+	margin-top: 10px;
+	height: 100% ;
+	text-align: center;
+	width: 100%;
+	
+}
+	
+}
 .ratings_container{
 	margin-top: 10px;
 	display: block;
