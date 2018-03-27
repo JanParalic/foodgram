@@ -257,25 +257,25 @@ function myFunction() {
 
     </div>
 
-      <span onclick="document.getElementById('id01').style.display='block'" class="add_img"> +</span>
+    <span onclick="document.getElementById('id01').style.display='block'" class="add_img"> +</span>
 
-  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content w3-animate-top w3-card-4 addModal">
-      <header class="w3-container">
-        <span onclick="document.getElementById('id01').style.display='none'"
-        class="w3-button w3-display-topright addClose">&times;</span>
-       <p class="addImgText"> Add image</p>
-      </header>
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4 addModal">
+            <header class="w3-container">
+            <span onclick="document.getElementById('id01').style.display='none'"
+                class="w3-button w3-display-topright addClose">&times;</span>
+            <p class="addImgText"> Add image</p>
+            </header>
 
-         <!-- Image upload -->
+            <!-- Image upload -->
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ upload_form.as_p }}
                 <input type="submit" name="submit" class="submitEdit" value="Upload" />
             </form>
 
+        </div>
     </div>
-  </div>
 </div>
 
 <script src="{% static 'js/rating_ajax.js' %}"></script>

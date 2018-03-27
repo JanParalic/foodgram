@@ -3,40 +3,38 @@
 {% load foodfeed_tags %}
 {% block resources %}
 
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<script src="{% static 'js/post.js' %}"></script>
-<script src="{% static 'js/ratings.js' %}"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="{% static 'js/post.js' %}"></script>
+    <script src="{% static 'js/ratings.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {% endblock %}
 
 {% block title_block %}
-    {{ user.first_name }} {{ user.last_name }}
+    {{ owner.first_name }} {{ owner.last_name }}
 {% endblock %}
 
 {% block body_block %}
-    {% if user.avatar %}
-            <div class="profilePic circular">
-                <img  src={{ user.avatar.url }}>
-
-            </div>
-
-            <p class="profileName">{{ user.first_name }} {{ user.last_name }}</p>
+    <a href="{% url "user_profile" owner.slug %}">
+    {% if owner.avatar %}
+        <div class="profilePic circular">
+            <img  src={{ owner.avatar.url }}>
+        </div>
 
     {% else %}
         <div class="profilePic circular">
-                <img  src="{% static "images/default_avatar.jpg" %}">
-
+            <img  src="{% static "images/default_avatar.jpg" %}">
         </div>
 
-           <p class="profileName">{{ user.first_name }} {{ user.last_name }}</p>
     {% endif %}
+    <p class="profileName">{{ owner.first_name }} {{ owner.last_name }}</p>
+    </a>
 
 
     <div class="profileContainer">
-    {% get_user_uploads user as pics %}
+    {% get_user_uploads owner as pics %}
 
     {% for pic in pics %}
 

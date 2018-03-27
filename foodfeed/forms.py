@@ -34,6 +34,7 @@ class ImageUploadForm(forms.ModelForm):
 
 
 class ProfileEditForm(forms.ModelForm):
+    avatar = forms.ImageField(label="", required=False, widget=forms.FileInput(attrs={'class': "uploadPic"}))
     first_name = forms.CharField(max_length=30, required=False, help_text="First Name: ", widget=forms.TextInput(attrs={'class': "fieldEdit"}))
     last_name = forms.CharField(max_length=30, required=False, help_text="Last Name: ", widget=forms.TextInput(attrs={'class': "fieldEdit"}))
     email = forms.EmailField(max_length=254, help_text="Email Address: ", widget=forms.TextInput(attrs={'class': "fieldEdit"}))

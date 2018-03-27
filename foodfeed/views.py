@@ -110,7 +110,7 @@ def user_profile(request, user_name_slug):
     else:
         comment_form = CommentSubmissionForm()
 
-    return render(request, "foodfeed/user_profile.html", {"user": User.objects.get(slug=user_name_slug),
+    return render(request, "foodfeed/user_profile.html", {"owner": User.objects.get(slug=user_name_slug),
                                                           "comment_form": comment_form})
 
 
