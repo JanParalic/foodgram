@@ -7,8 +7,10 @@ from foodfeed.forms import *
 from foodfeed.models import User, Picture
 
 
-
 def index(request):
+
+    if request.user.is_authenticated():
+        return redirect("foodfeed")
 
     if request.method == "POST":
         sign_up_form = SignUpForm(request.POST)
